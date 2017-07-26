@@ -12,7 +12,8 @@
                                   width: 150px; float: left; padding-top: 20px; }
 #content                        { width: calc(100% - 150px); float: left; }
 
-#left_sidebar .group            { margin-bottom: 20px; }
+#left_sidebar .group            { padding: 5px 0; margin: 0 0 20px 0; background-color: white;
+                                  border: 1px solid #E5E5E5; border-radius: 5px; }
 #left_sidebar .group .title     { display: block; margin: 0 0 0 2px; padding: 2px 6px; color: darkslategray;
                                   font-weight: bold; font-size: 8pt; line-height: normal; text-transform: uppercase; }
 
@@ -52,6 +53,10 @@ body[data-left-sidebar-visible="true"] #left_sidebar {
     background-color: silver;
     display: block; margin-bottom: 10px; padding-right: 10px; width: 100%;
     position: relative; z-index: 100;
+}
+
+body[data-left-sidebar-visible="true"] #left_sidebar .group {
+    margin-left: 10px;
 }
 
 /* The trigger is hidden when the main menu is expanded on small devices. */
