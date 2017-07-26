@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template>
+    
+    <name>Responsive template</name>
+    <version>1.0.0</version>
+    <group>templates_base</group>
+    
+    <description>
+        Adapted from the "Responsive" template for Wordpress by CyberChimps
+    </description>
+    
+    <tags>responsive, wordpress clone, mobile, desktop</tags>
+    
+    <author>
+        <company>LAVA SoftWorks</company>
+        <name>Alejandro Caballero</name>
+        <email>lava.caballero@gmail.com</email>
+    </author>
+    
+    <website>https://bardcanvas.com/responsive-template</website>
+    
+</template>
