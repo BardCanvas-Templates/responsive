@@ -69,7 +69,7 @@ $this_module->load_extensions("front", "index_renderer_before_internal_wrapper")
             </div>
             
             <a href="<?= $post->get_permalink() ?>">
-                <h2><?= $post->get_processed_title(false) ?></h2>
+                <h1><?= $post->get_processed_title(false) ?></h1>
             </a>
             
             <div class="meta_box">
