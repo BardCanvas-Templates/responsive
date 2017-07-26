@@ -20,11 +20,10 @@ a:visited,         .pseudo_link:visited                    { color: #0066cc; }
 
 h1 a, h1 .pseudo_link, h2 a, h2 .pseudo_link, h3 a, h3 .pseudo_link { color: #0066cc; }
 
-#header { color: whitesmoke; background-color: #ac00df; }
-#footer { color: whitesmoke; background-color: #1500f8; }
+#header { color: #555555; background-color: transparent; }
+#footer { color: #555555; background-color: transparent; }
 
-#header { border-bottom: 2px solid #9000bf; }
-
+#header .menu                         { background-color: #ac00df; }
 #header .main_menu_item               { color: whitesmoke; }
 #header .main_menu_item:link          { color: whitesmoke; }
 #header .main_menu_item:hover         { color: whitesmoke; background-color: #df44ff;    }
