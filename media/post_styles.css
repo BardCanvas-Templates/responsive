@@ -155,76 +155,19 @@ article.single_post h1 .emojione { height: 38px;  }
 
 /* Featured posts, only on the home */
 
-.featured_post                { display: block; text-decoration: none;
-                                background-color: white; margin-bottom: 10px;
-                                border: 1px solid #E5E5E5; border-radius: 3px; }
-.featured_post h3             { padding: 5px; margin: 0; font-size: 10pt; line-height: normal; }
-.featured_post .thumbnail     { display: block; border: none; }
-.featured_post .thumbnail img { width: 100%; border: none; }
-.featured_post .critical      { color: #FF0080; }
-.featured_post .admin_stuff   { font-size: 11pt; line-height: 12pt; padding-bottom: 2pt;
-                                border-top: 1px solid #FF0080; padding-top: 5px; margin-top: 5px; }
-
-/* By default, they're above the contents (For portrait mobiles) */
-
-#featured_posts_column { display: block; float: none; padding-left: 0; }
-
-/* They're on from 720px wide and above */
-
-/* Responsiveness */
-
-#home_index_wrapper[data-with-featured-posts="true"] #posts_index_wrapper {
-    float: left;
-}
-
-@media all and (min-width: 1361px) and (max-width: 99999px)
-{
-    #home_index_wrapper[data-with-featured-posts="true"] #posts_index_wrapper   { width: 70%; }
-    #home_index_wrapper[data-with-featured-posts="true"] #featured_posts_column { width: 30%; display: block; float: right; padding-left: 10px; }
-}
-
-@media all and (min-width: 1281px) and (max-width: 1360px)
-{
-    #home_index_wrapper[data-with-featured-posts="true"] #posts_index_wrapper   { width: 65%; }
-    #home_index_wrapper[data-with-featured-posts="true"] #featured_posts_column { width: 35%; display: block; float: right; padding-left: 10px; }
-}
-
-@media all and (min-width: 1025px) and (max-width: 1280px)
-{
-    #home_index_wrapper[data-with-featured-posts="true"] #posts_index_wrapper   { width: 63%; }
-    #home_index_wrapper[data-with-featured-posts="true"] #featured_posts_column { width: 37%; display: block; float: right; padding-left: 10px; }
-}
-
-@media all and (min-width: 769px) and (max-width: 1024px)
-{
-    #home_index_wrapper[data-with-featured-posts="true"] #posts_index_wrapper   { width: 68%; }
-    #home_index_wrapper[data-with-featured-posts="true"] #featured_posts_column { width: 32%; display: block; float: right; padding-left: 10px; }
-}
-
-@media all and (min-width: 100px) and (max-width: 480px)
-{
-    /* Sidebar is hidden here. We must adjust the content width. */
-    #content { width: 100%; }
-}
-
-/* Last resort for huge displays with featured posts (two cols index) */
-@media all and (min-width: 1900px) and (max-width: 99999px)
-{
-    #home_index_wrapper[data-with-featured-posts="true"] #posts_index_wrapper   { width: 75%; }
-    #home_index_wrapper[data-with-featured-posts="true"] #featured_posts_column { width: 25%; display: block; float: right; padding-left: 10px; }
-}
-
-
-/* Here goes two columns for small displays */
-@media all and (min-width: 260px) and (max-width: 768px)
-{
-    #featured_posts_column {
-        -webkit-column-count: 2; -webkit-column-gap: 10px;
-        -moz-column-count:    2; -moz-column-gap:    10px;
-        column-count:         2; column-gap:         10px;
-    }
-    .featured_post { display: inline-block; width: 100%; }
-}
+#featured_posts_column         { display: block; float: none; padding: 0; margin-bottom: 10px; }
+.featured_post                 { display: inline-block; text-decoration: none;
+                                 background-color: #F9F9F9; margin-bottom: 10px;
+                                 border: 1px solid #E5E5E5; border-radius: 3px;
+                                 width: calc(50% - 4px); padding: 10px; }
+.featured_post:nth-child(even) { margin-left: 3px; margin-right: 0; }
+.featured_post .title          { display: block; margin-bottom: 5px; font-size: 14pt;
+                                 height: 36pt; overflow: hidden; }
+.featured_post .thumbnail      { display: block; border: none; }
+.featured_post .thumbnail img  { width: 100%; border: none; }
+.featured_post .critical       { color: #FF0080; }
+.featured_post .admin_stuff    { font-size: 11pt; line-height: 12pt; padding-bottom: 2pt;
+                                 border-top: 1px solid #FF0080; padding-top: 5px; margin-top: 5px; }
 
 /* Comments on single posts */
 

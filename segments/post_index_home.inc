@@ -18,14 +18,15 @@ $has_featured_posts = count($posts_data->featured_posts) > 0 ? "true" : "false";
 
 <div id="home_index_wrapper" data-with-featured-posts="<?= $has_featured_posts ?>" class="clearfix">
     
-    <? if( $has_featured_posts == "true" ) include __DIR__ . "/home_featured_posts.inc"; ?>
-    
     <div id="posts_index_wrapper">
         <?
         $template->set("pagination_url_prefix", "$config->full_root_url/");
         
         if( $settings->get("modules:posts.slider_categories") != "" && $posts_data->pagination["this_page_number"] == 1 )
             include __DIR__ . "/home_slider.inc";
+        
+        if( $has_featured_posts == "true" )
+            include __DIR__ . "/home_featured_posts.inc";
         
         include __DIR__ . "/post_index_renderer.inc";
         ?>
