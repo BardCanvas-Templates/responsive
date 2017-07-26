@@ -24,8 +24,8 @@ h1:link:hover, h1.pseudo_link:hover,  h2:link:hover, h2.pseudo_link:hover,  h3:l
 
 a:hover h1,    .pseudo_link:hover h1, a:hover h1,    .pseudo_link:hover h2, a:hover h3,    .pseudo_link:hover h3 { color: #444444; }
 
-#header { color: #555555; background-color: transparent; }
-#footer { color: #555555; background-color: transparent; }
+#header { color: #555555; background-color: white; }
+#footer { color: #555555; background-color: white; }
 #footer a, #footer .pseudo_link { color: #0066cc; }
 
 #header .menu                         { background-color: #585858;
