@@ -29,7 +29,7 @@
 {
     /* Hidden for small displays (below 720px) */
     #content       { width: calc(100% - 150px) }
-    #right_sidebar { width: 100%; float: none; padding-left: 10px; }
+    #right_sidebar { width: 100%; float: none; padding-left: 0; }
     
     #user_info_sections { -moz-column-count:    1; -webkit-column-count:   1; column-count:   1; }
 }
