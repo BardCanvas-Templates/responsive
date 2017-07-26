@@ -34,7 +34,7 @@ header("Content-Type: text/html; charset=utf-8"); ?>
 <head>
     <!--suppress CssInvalidPropertyValue -->
     <style type="text/css">@-ms-viewport{ width: device-width; }</style>
-    <meta name="viewport"              content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <? $template->set("include_notification_functions", true); ?>
     <? $template->set("jquery_ui_theme", "redmond"); ?>
     <? include ROOTPATH . "/includes/common_header.inc" ?>
