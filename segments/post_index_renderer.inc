@@ -59,16 +59,33 @@ $this_module->load_extensions("front", "index_renderer_before_internal_wrapper")
                  data-main-category="<?= $post->main_category_slug ?>" data-main-category-min-level="<?= $post->main_category_min_level ?>"
                  data-author-role="<?= $author->get_role(true) ?>" data-author-level="<?= $author->level ?>">
             
-            <div class="meta_box clearfix">
-                
-                <img class="user_avatar" src="<?= $author->get_avatar_url() ?>">
-                
-                <div class="meta_section upper">
-                    <a class="meta_field user_display_name" data-user-level="<?= $author->level ?>"
-                       href="<?= $config->full_root_url ?>/user/<?= $author->user_name ?>/">
-                        <span class="fa fa-user fa-fw"></span>
-                        <?= $author->get_processed_display_name() ?>
-                    </a>
+            <div class="meta_box">
+                <a class="meta_field" href="<?= $config->full_root_url ?>/category/<?= $post->main_category_slug ?>/">
+                    <?= replace_escaped_objects(
+                        $template->language->posted_in,
+                        array('{$category}' => $post->main_category_title)
+                    ) ?>
+                </a>
+            </div>
+            
+            <a href="<?= $post->get_permalink() ?>">
+                <h2><?= $post->get_processed_title(false) ?></h2>
+            </a>
+            
+            <div class="meta_box">
+                <div class="meta_section">
+                    <?
+                    $date        = date("Y/m/d", strtotime($post->publishing_date));
+                    $date_string = time_complete_string($post->publishing_date) . " (" . time_elapsed_string($post->publishing_date) . ")";
+                    echo replace_escaped_objects(
+                        $template->language->posted_on_by, array(
+                        '{$date}'   => "<a class='meta_field' href='{$config->full_root_url}/date/{$date}/'>{$date_string}</a>",
+                        '{$author}' => "<a class='meta_field user_display_name' data-user-level='{$author->level}'
+                                                   href='{$config->full_root_url}/user/{$author->user_name}/'>
+                                                    <span class='fa fa-user fa-fw'></span> {$author->get_processed_display_name()}
+                                                </a>",
+                    )) ?>
+                    
                     <? if($account->level >= config::COADMIN_USER_LEVEL && $account->id_account != $author->id_account): ?>
                         <span class="meta_field critical pseudo_link disable_user_link" onclick="if(confirm($_GENERIC_CONFIRMATION)) toggle_account( '<?= $author->id_account ?>', 'disable', this )">
                             <span class="fa fa-lock"></span>
@@ -82,24 +99,20 @@ $this_module->load_extensions("front", "index_renderer_before_internal_wrapper")
                             </span>
                             <span class="target" style="display: none;"></span>
                         </span>
-                        
+            
                         <?= $author->get_pm_sending_link($language->contact->pm->caption, "meta_field critical pseudo_link") ?>
                     <? endif; ?>
                     
-                    <a class="meta_field" href="<?= $config->full_root_url ?>/category/<?= $post->main_category_slug ?>/">
-                        <span class="fa fa-folder fa-fw"></span>
-                        <?= $post->main_category_title ?>
-                    </a>
                     <? if( $post->main_category_visibility == "level_based" && ! empty($post->main_category_min_level) ): ?>
                         <span class="meta_field important">
                             <span class="fa fa-users"></span>
-                            <?= $config->user_levels_by_level[$post->main_category_min_level]; ?>
-                        </span>
+                                <?= $config->user_levels_by_level[$post->main_category_min_level]; ?>
+                            </span>
                     <? elseif( $post->visibility == "level_based" ): ?>
                         <span class="meta_field important">
                             <span class="fa fa-users"></span>
-                            <?= $config->user_levels_by_level[$post->author_level]; ?>
-                        </span>
+                                <?= $config->user_levels_by_level[$post->author_level]; ?>
+                            </span>
                     <? endif; ?>
                     
                     <? foreach( $post->get_filtered_tags_list() as $tag): ?>
@@ -111,121 +124,121 @@ $this_module->load_extensions("front", "index_renderer_before_internal_wrapper")
                     
                     <? $this_module->load_extensions("front", "index_renderer_item_meta_fields_upper"); ?>
                 </div>
-                <div class="meta_section">
-                    <a class="meta_field dimmed" href="<?= $config->full_root_url ?>/date/<?= date("Y/m/d", strtotime($post->publishing_date)) ?>/">
-                        <span class="fa fa-calendar fa-fw"></span>
-                        <?= time_today_string($post->publishing_date) . " (" . time_elapsed_string($post->publishing_date) . ")" ?>
-                    </a>
+            </div>
+            
+            <div class="post_contents clearfix">
+                <? if( ! empty($post->featured_image_thumbnail) ): ?>
+                    <a class="post_featured_image thumbnail <?= $post->featured_media_type ?>" href="<?= $post->get_permalink() ?>"
+                         style="background: url('<?= $post->featured_image_thumbnail ?>') center center no-repeat; background-size: cover;"></a>
+                <? endif; ?>
+                
+                <? $class = empty($post->featured_image_thumbnail) ? "no_image" : ""; ?>
+                <div class="post_excerpt <?= $class ?>">
+                    <?
+                    # echo $post->get_processed_excerpt();
                     
-                    <? if( $account->level >= config::MODERATOR_USER_LEVEL ): ?>
-                        <span class="meta_field critical">
-                            <span class="fa fa-eye fa-fw"></span>
-                            <?= number_format($post->views); ?>
-                        </span>
-                    <? endif; ?>
-                    
-                    <? if($post->expiration_date != "0000-00-00 00:00:00"): ?>
-                        <span class="meta_field dimmed">
-                            <span class="fa fa-clock-o fa-fw"></span>
-                            <?= preg_replace('/\d+s/', "", time_remaining_string($post->expiration_date)) ?>
-                        </span>
-                    <? endif; ?>
-                    
-                    <? $this_module->load_extensions("front", "index_renderer_item_meta_fields_lower"); ?>
-                    
-                    <? if( ! empty($post->creation_ip) && $account->level >= config::MODERATOR_USER_LEVEL ): ?>
-                        
-                        <span class="meta_field critical">
-                            <span class="fa fa-cloud"></span>
-                            <?= $post->creation_ip ?>
-                        </span>
-                        <a class="meta_field critical" href="<?= $config->full_root_path ?>/?s=ip:<?= $post->creation_ip ?>">
-                            <span class="fa fa-search"></span>
-                            <?= $language->ip ?>
-                        </a>
-                        <? $parts = explode(".", $post->creation_ip); array_pop($parts); ?>
-                        <a class="meta_field critical" href="<?= $config->full_root_path ?>/?s=ip:<?= implode(".", $parts) ?>.%25">
-                            <span class="fa fa-search"></span>
-                            <?= $language->segment ?>
-                        </a>
-                        
-                        <?
-                        $parts   = explode("; ", $post->creation_location);
-                        $isp      = array_pop($parts);
-                        $country  = array_pop($parts);
-                        $city     = implode("; ", $parts);
-                        if( $city != "N/A; N/A") : ?>
-                            <a class="meta_field critical" href="<?= $config->full_root_path ?>/?s=city:<?= urlencode($city) ?>">
-                                <span class="fa fa-map-marker"></span>
-                                <?= $city ?>
-                            </a>
-                        <? endif; ?>
-                        <? if($country != "N/A"): ?>
-                            <a class="meta_field critical" href="<?= $config->full_root_path ?>/?s=country:<?= urlencode($country) ?>">
-                                <span class="fa fa-globe"></span>
-                                <?= $country ?>
-                            </a>
-                        <? endif; ?>
-                        <? if($isp != "N/A"): ?>
-                            <a class="meta_field critical" href="<?= $config->full_root_path ?>/?s=isp:<?= urlencode($isp) ?>">
-                                <span class="fa fa-building"></span>
-                                <?= $isp ?>
-                            </a>
-                        <? endif; ?>
-                    <? endif; ?>
+                    $excerpt = $post->get_processed_excerpt();
+                    if( ! empty($excerpt) )
+                    {
+                        echo "
+                            $excerpt
+                            <br><br>
+                            <a href='{$post->get_permalink()}'>{$template->language->read_more}</a>
+                        ";
+                    }
+                    else
+                    {
+                        if( empty($post->featured_image_thumbnail) )
+                        {
+                            $contents = $post->get_processed_content();
+                            $pq = phpQuery::newDocumentHTML($contents);
+                            $img = $pq->find('img:first');
+                            $img->attr("height", "");
+                            $img->attr("width", "100%");
+                            echo "<a href=\"{$post->get_permalink()}\">$img</a>";
+                        }
+                    }
+                    ?>
                 </div>
                 
-            </div>
-            
-            <a href="<?= $post->get_permalink() ?>">
-                <h1><?= $post->get_processed_title(false) ?></h1>
-                <? if( ! empty($post->featured_image_thumbnail) ): ?>
-                    <div class="post_featured_image thumbnail <?= $post->featured_media_type ?>">
-                        <img src="<?= $post->featured_image_thumbnail ?>">
+                <? if( $account->level >= config::MODERATOR_USER_LEVEL ): ?>
+                    <div style="clear: left; padding-top: 20px;">
+                        <a class="greengo inline-block" 
+                           href="<?= $config->full_root_path ?>/posts/?edit_post=<?= $post->id_post ?>&wasuuup=<?= md5(mt_rand(1, 65535)) ?>"
+                           ><span class="fa fa-pencil fa-fw"></span><?= $language->edit ?></a>
+                        <span class="critical inline-block pseudo_link" 
+                           onclick="change_post_status( '<?= $post->id_post ?>', 'trashed', this, function() { $('article[data-post-id=' + <?= $post->id_post ?> + ']').fadeOut('fast') } )"
+                           ><span class="fa fa-trash fa-fw"></span><?= $this_module->language->record_nav->actions->trash ?></span>
+                        <span class="important pseudo_link inline-block"
+                              onclick="change_post_status( '<?= $post->id_post ?>', 'reviewing', this, function() { $('article[data-post-id=' + <?= $post->id_post ?> + ']').fadeOut('fast') } )"
+                              ><span class="fa fa-flag fa-fw"></span><?= $this_module->language->record_nav->actions->flag_for_review ?>
+                        </span>
                     </div>
                 <? endif; ?>
-            </a>
             
-            <div class="post_contents post_excerpt">
-                <?
-                # echo $post->get_processed_excerpt();
-                
-                $excerpt = $post->get_processed_excerpt();
-                if( ! empty($excerpt) )
-                {
-                    echo $excerpt;
-                }
-                else
-                {
-                    if( empty($post->featured_image_thumbnail) )
-                    {
-                        $contents = $post->get_processed_content();
-                        $pq = phpQuery::newDocumentHTML($contents);
-                        $img = $pq->find('img:first');
-                        $img->attr("height", "");
-                        $img->attr("width", "100%");
-                        echo "<a href=\"{$post->get_permalink()}\">$img</a>";
-                    }
-                }
-                ?>
-                
-                <? if( $account->level >= config::MODERATOR_USER_LEVEL ): ?>
-                    <br><a class="greengo inline-block" 
-                       href="<?= $config->full_root_path ?>/posts/?edit_post=<?= $post->id_post ?>&wasuuup=<?= md5(mt_rand(1, 65535)) ?>"
-                       ><span class="fa fa-pencil fa-fw"></span><?= $language->edit ?></a>
-                    <span class="critical inline-block pseudo_link" 
-                       onclick="change_post_status( '<?= $post->id_post ?>', 'trashed', this, function() { $('article[data-post-id=' + <?= $post->id_post ?> + ']').fadeOut('fast') } )"
-                       ><span class="fa fa-trash fa-fw"></span><?= $this_module->language->record_nav->actions->trash ?></span>
-                    <span class="important pseudo_link inline-block"
-                          onclick="change_post_status( '<?= $post->id_post ?>', 'reviewing', this, function() { $('article[data-post-id=' + <?= $post->id_post ?> + ']').fadeOut('fast') } )"
-                          ><span class="fa fa-flag fa-fw"></span><?= $this_module->language->record_nav->actions->flag_for_review ?>
-                    </span>
-                <? endif; ?>
+                <div class="meta_box">
+                    <div class="meta_section">
+                        <? if( $account->level >= config::MODERATOR_USER_LEVEL ): ?>
+                            <span class="meta_field critical">
+                                <span class="fa fa-eye fa-fw"></span>
+                                <?= number_format($post->views); ?>
+                            </span>
+                        <? endif; ?>
+                        
+                        <? if($post->expiration_date != "0000-00-00 00:00:00"): ?>
+                            <span class="meta_field dimmed">
+                                <span class="fa fa-clock-o fa-fw"></span>
+                                <?= preg_replace('/\d+s/', "", time_remaining_string($post->expiration_date)) ?>
+                            </span>
+                        <? endif; ?>
+                        
+                        <? $this_module->load_extensions("front", "index_renderer_item_meta_fields_lower"); ?>
+                        
+                        <? if( ! empty($post->creation_ip) && $account->level >= config::MODERATOR_USER_LEVEL ): ?>
+                            
+                            <span class="meta_field critical">
+                                <span class="fa fa-cloud"></span>
+                                <?= $post->creation_ip ?>
+                            </span>
+                            <a class="meta_field critical" href="<?= $config->full_root_path ?>/?s=ip:<?= $post->creation_ip ?>">
+                                <span class="fa fa-search"></span>
+                                <?= $language->ip ?>
+                            </a>
+                            <? $parts = explode(".", $post->creation_ip); array_pop($parts); ?>
+                            <a class="meta_field critical" href="<?= $config->full_root_path ?>/?s=ip:<?= implode(".", $parts) ?>.%25">
+                                <span class="fa fa-search"></span>
+                                <?= $language->segment ?>
+                            </a>
+                            
+                            <?
+                            $parts   = explode("; ", $post->creation_location);
+                            $isp      = array_pop($parts);
+                            $country  = array_pop($parts);
+                            $city     = implode("; ", $parts);
+                            if( $city != "N/A; N/A") : ?>
+                                <a class="meta_field critical" href="<?= $config->full_root_path ?>/?s=city:<?= urlencode($city) ?>">
+                                    <span class="fa fa-map-marker"></span>
+                                    <?= $city ?>
+                                </a>
+                            <? endif; ?>
+                            <? if($country != "N/A"): ?>
+                                <a class="meta_field critical" href="<?= $config->full_root_path ?>/?s=country:<?= urlencode($country) ?>">
+                                    <span class="fa fa-globe"></span>
+                                    <?= $country ?>
+                                </a>
+                            <? endif; ?>
+                            <? if($isp != "N/A"): ?>
+                                <a class="meta_field critical" href="<?= $config->full_root_path ?>/?s=isp:<?= urlencode($isp) ?>">
+                                    <span class="fa fa-building"></span>
+                                    <?= $isp ?>
+                                </a>
+                            <? endif; ?>
+                        <? endif; ?>
+                    </div>
+                </div>
                 
                 <? $this_module->load_extensions("front", "indexes_after_excerpt"); ?>
-                
             </div>
-            
         </article>
         
         <?

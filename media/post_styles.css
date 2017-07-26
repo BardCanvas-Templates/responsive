@@ -24,14 +24,17 @@
 
 /* Common meta areas */
 
-.meta_box                       { padding: 10px 10px 5px 10px; }
+.meta_box                       { padding: 10px 0 0 10px; }
 .meta_box .user_avatar          { float: left; margin-right: 10px; width: 42px; height: 42px; }
-.meta_box .meta_field           { display: inline-block; padding: 2px 4px; }
+.meta_box .meta_field           { display: inline-block; padding: 0 5px 5px 0; }
 .meta_box .meta_field.dimmed    { color: dimgrey; }
 .meta_box .meta_field.important { color: blue; }
 .meta_box .meta_field.critical  { color: #FF0080; text-shadow: none; }
 .meta_box .meta_section         { font-size: 10pt; line-height: 16px; padding: 1px; }
-.meta_box .meta_section.upper   { font-size: 11pt; }
+.meta_box .meta_section.upper   { font-size: 10pt; }
+
+.meta_box a.meta_field:hover            { color: #444444; }
+.meta_box .pseudo_link.meta_field:hover { color: #444444; }
 
 /* Posts */
 
@@ -41,12 +44,14 @@
 
 .posts_index article                          { margin-bottom: 20px; background-color: white;
                                                 border: 1px solid #E5E5E5; }
-.posts_index article h1                       { margin: 0; padding: 5px 10px; }
-.posts_index article .post_featured_image     { padding: 5px 10px; }
-.posts_index article .post_featured_image img { width: 100%; }
-.posts_index article .post_contents           { padding: 5px 10px 10px 10px; }
-.posts_index article .post_contents *         { margin-top: 1px; margin-bottom: 1px; }
+.posts_index article h2                       { margin: 0; padding: 5px 10px; }
+.posts_index article .post_contents           { padding: 10px; font-size: 14px; }
+.posts_index article .post_featured_image     { display: inline-block; float: left; margin: 0 20px 0 0; width: 115px; height: 115px; }
+.posts_index article .post_excerpt            { display: inline-block; width: calc(100% - 135px); }
+.posts_index article .post_excerpt.no_image   { display: block; width: 100%; }
+.posts_index article .post_excerpt *          { margin-top: 1px; margin-bottom: 1px; }
 .posts_index article .post_excerpt img        { max-width: 100%; }
+.posts_index article .post_contents .meta_box { margin-left: 0; padding-left: 0; }
 
 body#tinymce blockquote,
 article .post_contents blockquote,
