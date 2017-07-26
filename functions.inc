@@ -37,3 +37,22 @@ function add_admin_menu_items_to_header_menu()
     }
     
 }
+
+function build_reponsive_body_style()
+{
+    global $settings;
+    
+    $bgcolor  = $settings->get("templates:responsive.body_background_color");
+    $bgpos    = $settings->get("templates:responsive.body_background_image_position");
+    $bgsize   = $settings->get("templates:responsive.body_background_image_size");
+    $bgimage  = $settings->get("templates:responsive.body_background_image");
+    $bgrepeat = $settings->get("templates:responsive.body_background_image_repeat") == "true"
+              ? "repeat" : "no-repeat";
+    
+    if( empty($bgcolor)  ) $bgcolor = "white";
+    if( empty($bgimage)  ) $bgimage = "none"; else $bgimage = "url('$bgimage')";
+    if( empty($bgpos)    ) $bgpos   = "top left";
+    if( empty($bgsize)   ) $bgsize  = "contain";
+    
+    return "background: $bgcolor $bgimage $bgpos $bgrepeat; background-size: $bgsize;";
+}

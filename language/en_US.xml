@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+    
+    <posted_in>Posted in: {$category}</posted_in>
+    
+    <posted_on_by>Posted on {$date} by {$author}</posted_on_by>
+    
+    <read_more>Read more ›</read_more>
+
+    <settings_data>
+        <title>Responsive template</title>
+        
+        <specs key="body_background_color">
+            <title>Body Background Color</title>
+            <description><![CDATA[
+                Specify an HTML color to use as the body background,
+                E.G. <code>white</code> or <code>#FFFFFF</code>.
+                Defaults to <code>white</code>.<br>
+                <i class="fa fa-info-circle"></i>
+                This setting only affects the frontend layouts
+                (Home and Main). It is skipped on the helper layouts (Admin, Popup and others).
+            ]]></description>
+            <type>text</type>
+        </specs>
+        
+        <specs key="body_background_image">
+            <title>Body background image</title>
+            <description><![CDATA[
+                Specify an image to set as background.<br>
+                <i class="fa fa-info-circle"></i>
+                This setting only affects the frontend layouts
+                (Home and Main). It is skipped on the helper layouts (Admin, Popup and others).
+            ]]></description>
+            <type>@gallery:specs_renderer/image_selector</type>
+            <options>
+                <image_size>full</image_size>
+            </options>
+        </specs>
+        
+        <specs key="body_background_image_position">
+            <title>Body background image position</title>
+            <description><![CDATA[
+                Only used when the body background image is specified.
+            ]]></description>
+            <type>list</type>
+            <options>
+                <option value="top left"     >Top left (default)</option>
+                <option value="top center"   >Top center</option>
+                <option value="top right"    >Top right</option>
+                <option value="left center"  >Middle left</option>
+                <option value="center center">Middle center</option>
+                <option value="center right" >Middle right</option>
+                <option value="bottom left"  >Bottom left</option>
+                <option value="bottom center">Bottom center</option>
+                <option value="bottom right" >Bottom right</option>
+            </options>
+        </specs>
+        
+        <specs key="body_background_image_size">
+            <title>Body background image size</title>
+            <description><![CDATA[
+                Specify a sizing directive for the body background image.
+                In both cases, the aspect ratio is kept.
+            ]]></description>
+            <type>list</type>
+            <options>
+                <option value="contain">Contain in the viewport, no cropping (default)</option>
+                <option value="cover"  >Cover the entire viewport, cropping the edges if needed</option>
+            </options>
+        </specs>
+        
+        <specs key="body_background_image_repeat">
+            <title>Repeat body background image?</title>
+            <description><![CDATA[
+                By default, it isn't repeated.
+            ]]></description>
+            <type>yes/no</type>
+        </specs>
+        
+    </settings_data>
+    
+</language>
