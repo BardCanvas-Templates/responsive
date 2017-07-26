@@ -13,8 +13,12 @@ td       { font-family: 'Arial Narrow', Arial, Helvetica, sans-serif; font-size:
 #footer  { font-family: 'Arial Narrow', Arial, Helvetica, sans-serif; font-size: 11pt; padding-bottom: 0; }
 #content { line-height: normal; }
 
-body          { text-align: center; }
-#body_wrapper { text-align: left; padding: 20px; max-width: 1000px; margin: auto; }
+body.home, body.main                              { text-align: center; }
+body.home #body_wrapper, body.main #body_wrapper  { text-align: left; padding: 20px; max-width: 1000px; margin: auto; }
+
+body.admin h1 { font-size: 14pt; }
+body.admin h2 { font-size: 13pt; }
+body.admin h3 { font-size: 12pt; }
 
 .dropdown_menu { font-family: Arial, Helvetica, sans-serif; }
 body.popup     { background-color: transparent; }
