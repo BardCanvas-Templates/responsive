@@ -36,6 +36,11 @@
 .meta_box a.meta_field:hover            { color: #444444; }
 .meta_box .pseudo_link.meta_field:hover { color: #444444; }
 
+.single_post .meta_box { padding: 0; }
+
+.single_post .signature_avatar { float: left; margin-right: 10px; width: 80px; height: 80px; }
+.single_post .author_signature ul { margin-left: 65px; }
+
 /* Posts */
 
 #posts_pagination             { font-size: 14pt; line-height: 1em; }
@@ -75,9 +80,13 @@ article.single_post.trashed   { background-color: #ffeeb6; }
 
 /* Single post overrides */
 
-.single_post h1           { font-size: 38px;  }
-.single_post h1 .emojione { height: 38px;  }
+article.single_post h1           { font-size: 38px;  }
+article.single_post h1 .emojione { height: 38px;  }
+
 .single_post .meta_box    { margin-bottom: 20px; }
+
+.content_frame h1           { font-size: 24px; }
+.content_frame h1 .emojione { height:    24px; }
 
 .single_post img   { max-width: 100%; }
 .single_post video { max-width: 100%; max-height: 90vh; }
@@ -97,15 +106,15 @@ article.single_post.trashed   { background-color: #ffeeb6; }
 }
 
 .single_item_actions .item  {
-    border:           1px solid #990d0d;
-    color:            #990d0d;
+    border:           1px solid #0066cc;
+    color:            #0066cc;
     background-color: white;
 }
 
 .single_item_actions .action {
     cursor:           pointer;
     color:            white;
-    background-color: #990d0d;
+    background-color: #0066cc;
 }
 
 .single_item_actions .warning {
@@ -123,10 +132,10 @@ article.single_post.trashed   { background-color: #ffeeb6; }
     margin-left: 0; border-top-left-radius: 0; border-bottom-left-radius: 0;
     border-left: none;
     color: yellow;
-    background-color: orangered;
+    background-color: #0066cc;
 }
 
-.single_item_actions .action:hover { background-color: red; }
+.single_item_actions .action:hover { background-color: #7DB1E5; }
 
 .single_item_actions .action.admin {
     border-color:     #bf005b;

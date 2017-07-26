@@ -33,6 +33,10 @@ body.admin h1, body.popup h1 { font-size: 14pt; }
 body.admin h2, body.popup h2 { font-size: 13pt; }
 body.admin h3, body.popup h3 { font-size: 12pt; }
 
+section h1 { font-size: 14pt; }
+section h2 { font-size: 13pt; }
+section h3 { font-size: 12pt; }
+
 a { text-decoration: none; }
 
 h1 a.small        { font-family: Arial, Helvetica, sans-serif; font-size: 16px; font-weight: bold; }
@@ -119,8 +123,8 @@ h3 .emojione { height: 20px; }
 
 /* Signatures, for both base pages and tinymce */
 
-.author_signature                         { margin-top: 20px; padding-top: 10px; padding-right: 20px;
-                                            border-top: 2px solid silver; display: inline-block; width: auto;
+.author_signature                         { margin-top: 20px; padding: 10px; 
+                                            border: 1px solid #D6D6D6; border-radius: 3px; background-color: #F9F9F9;
                                             font-size: 11pt; line-height: normal; }
 body#tinymce[data-id="account_signature"] { font-size: 11pt; line-height: normal; }
 

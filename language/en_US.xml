@@ -6,7 +6,27 @@
     <posted_on_by>Posted on {$date} by {$author}</posted_on_by>
     
     <read_more>Read more ›</read_more>
-
+    
+    <author_bio><![CDATA[
+        <p><b>
+            About {$author}:
+        </b></p>
+        <ul>
+            <li>
+                Member since: {$member_since}
+            </li>
+            <li>
+                From: {$country}
+            </li>
+            <li>
+                Last seen: {$last_activity}
+            </li>
+        </ul>
+        <p>
+            <a href="{$profile_link}">View full profile ›</a>
+        </p>
+    ]]></author_bio>
+    
     <settings_data>
         <title>Responsive template</title>
         

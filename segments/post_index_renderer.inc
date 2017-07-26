@@ -59,6 +59,7 @@ $this_module->load_extensions("front", "index_renderer_before_internal_wrapper")
                  data-main-category="<?= $post->main_category_slug ?>" data-main-category-min-level="<?= $post->main_category_min_level ?>"
                  data-author-role="<?= $author->get_role(true) ?>" data-author-level="<?= $author->level ?>">
             
+            <!-- Category and hashtags -->
             <div class="meta_box">
                 <a class="meta_field" href="<?= $config->full_root_url ?>/category/<?= $post->main_category_slug ?>/">
                     <?= replace_escaped_objects(
@@ -66,12 +67,33 @@ $this_module->load_extensions("front", "index_renderer_before_internal_wrapper")
                         array('{$category}' => $post->main_category_title)
                     ) ?>
                 </a>
+                
+                <? if( $post->main_category_visibility == "level_based" && ! empty($post->main_category_min_level) ): ?>
+                    <span class="meta_field important">
+                        <span class="fa fa-users"></span>
+                            <?= $config->user_levels_by_level[$post->main_category_min_level]; ?>
+                        </span>
+                <? elseif( $post->visibility == "level_based" ): ?>
+                    <span class="meta_field important">
+                        <span class="fa fa-users"></span>
+                            <?= $config->user_levels_by_level[$post->author_level]; ?>
+                        </span>
+                <? endif; ?>
+                
+                <? foreach( $post->get_filtered_tags_list() as $tag): ?>
+                    <a class="meta_field" href="<?= $config->full_root_path ?>/tag/<?= $tag ?>" target="_blank">
+                        <span class="fa fa-hashtag"></span>
+                        <?= $tag ?>
+                    </a>
+                <? endforeach; ?>
             </div>
             
+            <!-- Title -->
             <a href="<?= $post->get_permalink() ?>">
                 <h1><?= $post->get_processed_title(false) ?></h1>
             </a>
             
+            <!-- Author meta -->
             <div class="meta_box">
                 <div class="meta_section">
                     <?
@@ -103,30 +125,13 @@ $this_module->load_extensions("front", "index_renderer_before_internal_wrapper")
                         <?= $author->get_pm_sending_link($language->contact->pm->caption, "meta_field critical pseudo_link") ?>
                     <? endif; ?>
                     
-                    <? if( $post->main_category_visibility == "level_based" && ! empty($post->main_category_min_level) ): ?>
-                        <span class="meta_field important">
-                            <span class="fa fa-users"></span>
-                                <?= $config->user_levels_by_level[$post->main_category_min_level]; ?>
-                            </span>
-                    <? elseif( $post->visibility == "level_based" ): ?>
-                        <span class="meta_field important">
-                            <span class="fa fa-users"></span>
-                                <?= $config->user_levels_by_level[$post->author_level]; ?>
-                            </span>
-                    <? endif; ?>
-                    
-                    <? foreach( $post->get_filtered_tags_list() as $tag): ?>
-                        <a class="meta_field" href="<?= $config->full_root_path ?>/tag/<?= $tag ?>" target="_blank">
-                            <span class="fa fa-hashtag"></span>
-                            <?= $tag ?>
-                        </a>
-                    <? endforeach; ?>
-                    
                     <? $this_module->load_extensions("front", "index_renderer_item_meta_fields_upper"); ?>
                 </div>
             </div>
             
             <div class="post_contents clearfix">
+                
+                <!-- Contents -->
                 <? if( ! empty($post->featured_image_thumbnail) ): ?>
                     <a class="post_featured_image thumbnail <?= $post->featured_media_type ?>" href="<?= $post->get_permalink() ?>"
                          style="background: url('<?= $post->featured_image_thumbnail ?>') center center no-repeat; background-size: cover;"></a>
@@ -162,6 +167,8 @@ $this_module->load_extensions("front", "index_renderer_before_internal_wrapper")
                 </div>
                 
                 <? if( $account->level >= config::MODERATOR_USER_LEVEL ): ?>
+                    
+                    <!-- Admin links -->
                     <div style="clear: left; padding-top: 20px;">
                         <a class="greengo inline-block" 
                            href="<?= $config->full_root_path ?>/posts/?edit_post=<?= $post->id_post ?>&wasuuup=<?= md5(mt_rand(1, 65535)) ?>"
@@ -174,8 +181,10 @@ $this_module->load_extensions("front", "index_renderer_before_internal_wrapper")
                               ><span class="fa fa-flag fa-fw"></span><?= $this_module->language->record_nav->actions->flag_for_review ?>
                         </span>
                     </div>
+                    
                 <? endif; ?>
-            
+                
+                <!-- Extra metas -->
                 <div class="meta_box">
                     <div class="meta_section">
                         <? if( $account->level >= config::MODERATOR_USER_LEVEL ): ?>

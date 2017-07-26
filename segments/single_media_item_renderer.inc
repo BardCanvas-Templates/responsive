@@ -11,27 +11,65 @@
  * @var media_record $item
  */
 
+use hng2_base\account;
 use hng2_base\config;
 use hng2_base\module;
 use hng2_media\media_record;
 
-$author = $item->get_author();
+$author = new account($item->id_author);
 ?>
 
 <article class="post single_post media_item single_media_item clearfix" data-item-id="<?= $item->id_media ?>"
          data-main-category="<?= $item->main_category_slug ?>"
          data-author-role="<?= $author->get_role(true) ?>" data-author-level="<?= $author->level ?>">
     
+    <!-- Category and hashtags -->
     <div class="meta_box clearfix">
-        
-        <img class="user_avatar" src="<?= $author->get_avatar_url() ?>">
-        
-        <div class="meta_section upper">
-            <a class="meta_field user_display_name" data-user-level="<?= $author->level ?>"
-               href="<?= $config->full_root_url ?>/user/<?= $author->user_name ?>/">
-                <span class="fa fa-user fa-fw"></span>
-                <?= $author->get_processed_display_name() ?>
+        <div class="meta_section">
+            <a class="meta_field" href="<?= $config->full_root_url ?>/category/<?= $item->main_category_slug ?>/">
+                <span class="fa fa-folder fa-fw"></span>
+                <?= $item->main_category_title ?>
             </a>
+            
+            <? if( $item->main_category_visibility == "level_based" && ! empty($item->main_category_min_level) ): ?>
+                <span class="meta_field important">
+                    <span class="fa fa-users"></span>
+                    <?= $config->user_levels_by_level[$item->main_category_min_level]; ?>
+                </span>
+            <? elseif( $item->visibility == "level_based" ): ?>
+                <span class="meta_field important">
+                    <span class="fa fa-users"></span>
+                    <?= $config->user_levels_by_level[$item->author_level]; ?>
+                </span>
+            <? endif; ?>
+        </div>
+        
+        <? foreach( $item->get_filtered_tags_list() as $tag): ?>
+            <a class="meta_field" href="<?= $config->full_root_path ?>/tag/<?= $tag ?>/media" target="_blank">
+                <span class="fa fa-hashtag"></span>
+                <?= $tag ?>
+            </a>
+        <? endforeach; ?>
+    </div>
+    
+    <h1>
+        <?= $item->get_processed_title() ?>
+    </h1>
+    
+    <!-- Author meta -->
+    <div class="meta_box clearfix">
+        <div class="meta_section">
+            <?
+            $date        = date("Y/m/d", strtotime($item->publishing_date));
+            $date_string = time_complete_string($item->publishing_date) . " (" . time_elapsed_string($item->publishing_date) . ")";
+            echo replace_escaped_objects(
+                $template->language->posted_on_by, array(
+                '{$date}'   => "<a class='meta_field' href='{$config->full_root_url}/date/{$date}/'>{$date_string}</a>",
+                '{$author}' => "<a class='meta_field user_display_name' data-user-level='{$author->level}'
+                                   href='{$config->full_root_url}/user/{$author->user_name}/'>
+                                    <span class='fa fa-user fa-fw'></span> {$author->get_processed_display_name()}
+                                </a>",
+            )) ?>
             
             <? if($account->level >= config::COADMIN_USER_LEVEL && $account->id_account != $author->id_account): ?>
                 <span class="meta_field critical pseudo_link disable_user_link" onclick="if(confirm($_GENERIC_CONFIRMATION)) toggle_account( '<?= $author->id_account ?>', 'disable', this )">
@@ -48,34 +86,7 @@ $author = $item->get_author();
                 </span>
             <? endif; ?>
             
-            <a class="meta_field" href="<?= $config->full_root_url ?>/category/<?= $item->main_category_slug ?>/">
-                <span class="fa fa-folder fa-fw"></span>
-                <?= $item->main_category_title ?>
-            </a>
-            <? if( $item->main_category_visibility == "level_based" && ! empty($item->main_category_min_level) ): ?>
-                <span class="meta_field important">
-                    <span class="fa fa-users"></span>
-                    <?= $config->user_levels_by_level[$item->main_category_min_level]; ?>
-                </span>
-            <? elseif( $item->visibility == "level_based" ): ?>
-                <span class="meta_field important">
-                    <span class="fa fa-users"></span>
-                    <?= $config->user_levels_by_level[$item->author_level]; ?>
-                </span>
-            <? endif; ?>
-            
-            <? foreach( $item->get_filtered_tags_list() as $tag): ?>
-                <a class="meta_field" href="<?= $config->full_root_path ?>/tag/<?= $tag ?>/media" target="_blank">
-                    <span class="fa fa-hashtag"></span>
-                    <?= $tag ?>
-                </a>
-            <? endforeach; ?>
-        </div>
-        <div class="meta_section">
-            <a class="meta_field dimmed" href="<?= $config->full_root_url ?>/date/<?= date("Y/m/d", strtotime($item->publishing_date)) ?>/">
-                <span class="fa fa-calendar fa-fw"></span>
-                <?= time_complete_string($item->publishing_date) . " (" . time_elapsed_string($item->publishing_date) . ")" ?>
-            </a>
+            <!-- Extra metas -->
             <span class="meta_field">
                 <span class="fa fa-eye fa-fw"></span>
                 <?= number_format($item->views); ?>
@@ -122,12 +133,7 @@ $author = $item->get_author();
                 <? endif; ?>
             <? endif; ?>
         </div>
-        
     </div>
-    
-    <h1>
-        <?= $item->get_processed_title() ?>
-    </h1>
     
     <p class="single_item_actions">
         <span class="item action clipboard-copy" data-clipboard-text="<?= $item->get_page_url(true) ?>" style="">
@@ -170,7 +176,6 @@ $author = $item->get_author();
         <? endif; ?>
         
         <? $current_module->load_extensions("front", "single_media_item_actions"); ?>
-        
     </p>
     
     <div class="post_contents">
@@ -190,11 +195,24 @@ $author = $item->get_author();
         <?= $item->get_processed_description() ?>
     </div>
     
-    <? if( ! empty($author->signature) ): ?>
-        <div class="author_signature">
-            <?= $author->get_processed_signature() ?>
-        </div>
-    <? endif ?>
+    <div class="author_signature clearfix">
+        <img class="signature_avatar" src="<?= $author->get_avatar_url() ?>">
+        <?
+        echo replace_escaped_objects(
+            $template->language->author_bio, array(
+            '{$author}'        => "<a class='meta_field user_display_name' data-user-level='{$author->level}'
+                                      href='{$config->full_root_url}/user/{$author->user_name}/'>
+                                       <span class='fa fa-user fa-fw'></span> {$author->get_processed_display_name()}
+                                   </a>",
+            '{$member_since}'  => time_elapsed_string($author->creation_date),
+            '{$country}'       => $author->country_name,
+            '{$last_activity}' => $author->get_last_activity(true),
+            '{$profile_link}'  => "{$config->full_root_url}/user/{$author->user_name}/",
+        ));
+        
+        if( ! empty($author->signature) ) echo "<hr>" . $author->get_processed_signature();
+        ?>
+    </div>
     
 </article>
 
