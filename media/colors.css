@@ -16,54 +16,138 @@ h3 { color: #0066cc; }
 
 a:link,            .pseudo_link                            { color: #0066cc; }
 a:active, a:hover, .pseudo_link:active, .pseudo_link:hover { color: #444444; }
-a:visited,         .pseudo_link:visited                    { color: #0066cc; }
+a:visited,         .pseudo_link:visited                    { color: #003366; }
 
-h1 a, h1 .pseudo_link, h2 a, h2 .pseudo_link, h3 a, h3 .pseudo_link { color: #0066cc; }
+h1 a,          h1 .pseudo_link,       h2 a,          h2 .pseudo_link,       h3 a,          h3 .pseudo_link       { color: #0066cc; }
+h1 a:hover,    h1 .pseudo_link:hover, h2 a:hover,    h2 .pseudo_link:hover, h3 a:hover,    h3 .pseudo_link:hover { color: #444444; }
+h1:link:hover, h1.pseudo_link:hover,  h2:link:hover, h2.pseudo_link:hover,  h3:link:hover, h3.pseudo_link:hover  { color: #444444; }
+
+a:hover h1,    .pseudo_link:hover h1, a:hover h1,    .pseudo_link:hover h2, a:hover h3,    .pseudo_link:hover h3 { color: #444444; }
 
 #header { color: #555555; background-color: transparent; }
 #footer { color: #555555; background-color: transparent; }
+#footer a, #footer .pseudo_link { color: #0066cc; }
 
-#header .menu                         { background-color: #ac00df; }
-#header .main_menu_item               { color: whitesmoke; }
-#header .main_menu_item:link          { color: whitesmoke; }
-#header .main_menu_item:hover         { color: whitesmoke; background-color: #df44ff;    }
-#header .main_menu_item.current       { color: #9400bf;    background-color: whitesmoke; }
-#header .main_menu_item.current:hover { color: whitesmoke; background-color: #e486ff;    }
+#header .menu                         { background-color: #585858;
+                                        background-image: -webkit-gradient(linear,left top,left bottom,from(#585858),to(#3d3d3d));
+                                        background-image: -webkit-linear-gradient(top,#585858,#3d3d3d);
+                                        background-image: -moz-linear-gradient(top,#585858,#3d3d3d);
+                                        background-image: -ms-linear-gradient(top,#585858,#3d3d3d);
+                                        background-image: -o-linear-gradient(top,#585858,#3d3d3d);
+                                        background-image: linear-gradient(to top,#585858,#3d3d3d);
+                                        -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#585858, endColorstr=#3d3d3d)";
+                                      }
+#header .main_menu_item               { color: white; }
+#header .main_menu_item:link          { color: white; }
+#header .main_menu_item:hover         { color: white;
+                                        background-color: #808080;
+                                        background-image: -webkit-gradient(linear,left top,left bottom,from(#808080),to(#363636));
+                                        background-image: -webkit-linear-gradient(top,#808080,#363636);
+                                        background-image: -moz-linear-gradient(top,#808080,#363636);
+                                        background-image: -ms-linear-gradient(top,#808080,#363636);
+                                        background-image: -o-linear-gradient(top,#808080,#363636);
+                                        background-image: linear-gradient(to top,#808080,#363636);
+                                        -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#808080, endColorstr=#363636)";
+                                      }
+#header .main_menu_item.current       { color: white;      background-color: #343434; }
+#header .main_menu_item.current:hover { color: white;
+                                        background-color: #808080;
+                                        background-image: -webkit-gradient(linear,left top,left bottom,from(#808080),to(#363636));
+                                        background-image: -webkit-linear-gradient(top,#808080,#363636);
+                                        background-image: -moz-linear-gradient(top,#808080,#363636);
+                                        background-image: -ms-linear-gradient(top,#808080,#363636);
+                                        background-image: -o-linear-gradient(top,#808080,#363636);
+                                        background-image: linear-gradient(to top,#808080,#363636);
+                                        -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#808080, endColorstr=#363636)";
+                                      }
 
-#header .main_menu_item.highlighted               { color: #ebff00; }
-#header .main_menu_item.highlighted:link          { color: #ebff00; }
-#header .main_menu_item.highlighted:hover         { color: black; background-color: #ebff00; }
-#header .main_menu_item.highlighted.current       { color: black; background-color: #abbf00; }
-#header .main_menu_item.highlighted.current:hover { color: black; background-color: #b9ff45; }
+#header .main_menu_item.highlighted               { color: #7EB2E5; }
+#header .main_menu_item.highlighted:link          { color: #7EB2E5; }
+#header .main_menu_item.highlighted:hover         { color: #7EB2E5; }
+#header .main_menu_item.highlighted.current       { color: #7EB2E5; background-color: #343434; }
+#header .main_menu_item.highlighted.current:hover { color: #7EB2E5;
+                                                    background-color: #808080;
+                                                    background-image: -webkit-gradient(linear,left top,left bottom,from(#808080),to(#363636));
+                                                    background-image: -webkit-linear-gradient(top,#808080,#363636);
+                                                    background-image: -moz-linear-gradient(top,#808080,#363636);
+                                                    background-image: -ms-linear-gradient(top,#808080,#363636);
+                                                    background-image: -o-linear-gradient(top,#808080,#363636);
+                                                    background-image: linear-gradient(to top,#808080,#363636);
+                                                    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#808080, endColorstr=#363636)";
+                                                  }
 
-#header .main_menu_item.alerted               { color: maroon; background-color: yellow; }
-#header .main_menu_item.alerted:link          { color: maroon; }
-#header .main_menu_item.alerted:hover         { color: red;    }
-#header .main_menu_item.alerted.current       { color: red;    }
-#header .main_menu_item.alerted.current:hover { color: red;    }
+#header .main_menu_item.alerted               { color: red;    background: yellow; }
+#header .main_menu_item.alerted:link          { color: red; }
+#header .main_menu_item.alerted:hover         { color: red;    background: yellow; }
+#header .main_menu_item.alerted.current       { color: maroon; background: yellow; }
+#header .main_menu_item.alerted.current:hover { color: red;    background: yellow; }
 
 #header .main_menu_item.alerted       .fa.fa-border { border-color: maroon; }
 #header .main_menu_item.alerted:hover .fa.fa-border { border-color: red;    }
 
-#header .main_menu_item.submenu_visible       { color: #9400bf;    background-color: whitesmoke; }
-#header .main_menu_item.submenu_visible:hover { color: whitesmoke; background-color: #df44ff; }
+#header .main_menu_item.submenu_visible       { color: white; background: #343434; }
+#header .main_menu_item.submenu_visible:hover { color: white; background: #343434; }
 
-#main_menu_trigger.open                       { color: #f07; background-color: black; }
+#main_menu_trigger.open                       { color: white; background: #343434; }
 
 /* Dropdown menu */
 
-.dropdown_menu                               { color: white; background-color: #f07; }
-.dropdown_menu .main_menu_item               { color: white; }
-.dropdown_menu .main_menu_item:link          { color: white; }
-.dropdown_menu .main_menu_item:hover         { color: white;   background-color: black;   }
-.dropdown_menu .main_menu_item.current       { color: #f07;    background-color: #f6f8f9; }
-.dropdown_menu .main_menu_item.current:hover { color: #f07;    background-color: #ebff00; }
-
-.dropdown_menu .main_menu_item.highlighted               { color: black; background-color: #ebff00; }
-.dropdown_menu .main_menu_item.highlighted:link          { color: black; background-color: #ebff00; }
-.dropdown_menu .main_menu_item.highlighted:hover         { color: green; background-color: #ebff00; }
-.dropdown_menu .main_menu_item.highlighted.current       { color: black; background-color: #abbf00; }
-.dropdown_menu .main_menu_item.highlighted.current:hover { color: green; background-color: #b9ff45; }
+.dropdown_menu                                           { color: white;
+                                                           background-color: #585858;
+                                                           background-image: -webkit-gradient(linear,left top,left bottom,from(#585858),to(#3d3d3d));
+                                                           background-image: -webkit-linear-gradient(top,#585858,#3d3d3d);
+                                                           background-image: -moz-linear-gradient(top,#585858,#3d3d3d);
+                                                           background-image: -ms-linear-gradient(top,#585858,#3d3d3d);
+                                                           background-image: -o-linear-gradient(top,#585858,#3d3d3d);
+                                                           background-image: linear-gradient(to top,#585858,#3d3d3d);
+                                                           -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#585858, endColorstr=#3d3d3d)";
+                                                         }
+.dropdown_menu .main_menu_item                           { color: white; }
+.dropdown_menu .main_menu_item:link                      { color: white; }
+.dropdown_menu .main_menu_item:hover                     { color: white;
+                                                           background-color: #808080;
+                                                           background-image: -webkit-gradient(linear,left top,left bottom,from(#808080),to(#363636));
+                                                           background-image: -webkit-linear-gradient(top,#808080,#363636);
+                                                           background-image: -moz-linear-gradient(top,#808080,#363636);
+                                                           background-image: -ms-linear-gradient(top,#808080,#363636);
+                                                           background-image: -o-linear-gradient(top,#808080,#363636);
+                                                           background-image: linear-gradient(to top,#808080,#363636);
+                                                           -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#808080, endColorstr=#363636)";
+                                                         }
+.dropdown_menu .main_menu_item.current                   { color: white;   background-color: #343434; }
+.dropdown_menu .main_menu_item.current:hover             { color: #7EB2E5;
+                                                           background-color: #808080;
+                                                           background-image: -webkit-gradient(linear,left top,left bottom,from(#808080),to(#363636));
+                                                           background-image: -webkit-linear-gradient(top,#808080,#363636);
+                                                           background-image: -moz-linear-gradient(top,#808080,#363636);
+                                                           background-image: -ms-linear-gradient(top,#808080,#363636);
+                                                           background-image: -o-linear-gradient(top,#808080,#363636);
+                                                           background-image: linear-gradient(to top,#808080,#363636);
+                                                           -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#808080, endColorstr=#363636)";
+                                                         }
+.dropdown_menu .main_menu_item.highlighted               { color: #7EB2E5; background: transparent; }
+.dropdown_menu .main_menu_item.highlighted:link          { color: #7EB2E5; background: transparent; }
+.dropdown_menu .main_menu_item.highlighted:hover         { color: #7EB2E5;
+                                                           background-color: #808080;
+                                                           background-image: -webkit-gradient(linear,left top,left bottom,from(#808080),to(#363636));
+                                                           background-image: -webkit-linear-gradient(top,#808080,#363636);
+                                                           background-image: -moz-linear-gradient(top,#808080,#363636);
+                                                           background-image: -ms-linear-gradient(top,#808080,#363636);
+                                                           background-image: -o-linear-gradient(top,#808080,#363636);
+                                                           background-image: linear-gradient(to top,#808080,#363636);
+                                                           -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#808080, endColorstr=#363636)";
+                                                         }
+.dropdown_menu .main_menu_item.highlighted.current       { color: #7EB2E5; background-color: #343434; }
+.dropdown_menu .main_menu_item.highlighted.current:hover { color: #7EB2E5;
+                                                           background-color: #808080;
+                                                           background-image: -webkit-gradient(linear,left top,left bottom,from(#808080),to(#363636));
+                                                           background-image: -webkit-linear-gradient(top,#808080,#363636);
+                                                           background-image: -moz-linear-gradient(top,#808080,#363636);
+                                                           background-image: -ms-linear-gradient(top,#808080,#363636);
+                                                           background-image: -o-linear-gradient(top,#808080,#363636);
+                                                           background-image: linear-gradient(to top,#808080,#363636);
+                                                           -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#808080, endColorstr=#363636)";
+                                                         }
 
 section > h1 { color: white; background-color: #0066cc; border-color: #E5E5E5; }
 section > h2 { color: white; background-color: #0066cc; border-color: #E5E5E5; }
@@ -77,18 +161,18 @@ section > h3 a, section > h3 .pseudo_link, section > h3 .pseudo_link:hover { col
 
 /* Core Admin colors */
 
-#admin_menu { color: black; background-color: #ebff00; }
+#admin_menu { color: white; background-color: #0066cc; }
 
-#admin_menu .admin_bar_title { color: #647f00; }
+#admin_menu .admin_bar_title { color: whitesmoke; }
 
-#admin_menu .item       { color: black; }
-#admin_menu .item:hover { color: #ebff00; background-color: black; }
+#admin_menu .item       { color: white; }
+#admin_menu .item:hover { color: #0066cc; background-color: white; }
 
-#admin_menu .item.current       { color: white; background-color: #647f00; }
-#admin_menu .item.current:hover { color: white; background-color: #9dbf00; }
+#admin_menu .item.current       { color: white;   background-color: #003066; }
+#admin_menu .item.current:hover { color: #003066; background-color: white;   }
 
-#admin_menu_trigger:hover { color: #ebff00; background-color: black;   }
-#admin_menu_trigger.open  { color: white;   background-color: #647f00; }
+#admin_menu_trigger:hover { color: #0066cc; background-color: white;   }
+#admin_menu_trigger.open  { color: white;   background-color: #003066; }
 
 body.admin h1 { color: white; background-color: #0066cc; border-color: #E5E5E5; }
 body.admin h2 { color: white; background-color: #0066cc; border-color: #E5E5E5; }
