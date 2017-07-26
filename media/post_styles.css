@@ -169,6 +169,8 @@ article.single_post h1 .emojione { height: 38px;  }
 .featured_post .admin_stuff    { font-size: 11pt; line-height: 12pt; padding-bottom: 2pt;
                                  border-top: 1px solid #FF0080; padding-top: 5px; margin-top: 5px; }
 
+.featured_post .title .emojione { height: 14pt; }
+
 /* Comments on single posts */
 
 #post_comments .comment_entry                { margin-top: 10px; padding-top: 10px; border-top: 2px solid silver;
