@@ -13,15 +13,18 @@ td       { font-family: 'Arial Narrow', Arial, Helvetica, sans-serif; font-size:
 #footer  { font-family: 'Arial Narrow', Arial, Helvetica, sans-serif; font-size: 11pt; }
 #content { line-height: normal; }
 
+body          { text-align: center; }
+#body_wrapper { text-align: left; padding: 20px 0; max-width: 960px; margin: auto; }
+
 .dropdown_menu { font-family: Arial, Helvetica, sans-serif; }
 body.popup { background-color: transparent; }
 
 textarea, pre, .fixed_font, code { font-family: 'Lucida Console', 'Courier new', 'Courier', monospace; font-size: 10pt; }
 textarea.no_fw_font              { font-family: Arial, Helvetica, sans-serif; font-size: 12pt; }
 
-h1 { font-family: Arial, Helvetica, sans-serif; font-size: 14pt; line-height: 16pt; }
-h2 { font-family: Arial, Helvetica, sans-serif; font-size: 13pt; line-height: 15pt; }
-h3 { font-family: Arial, Helvetica, sans-serif; font-size: 12pt; line-height: 14pt; }
+h1 { font-family: Arial, Helvetica, sans-serif; font-size: 48px; line-height: normal; }
+h2 { font-family: Arial, Helvetica, sans-serif; font-size: 32px; line-height: normal; }
+h3 { font-family: Arial, Helvetica, sans-serif; font-size: 24px; line-height: normal; }
 
 h1 a.small { font-family: Arial, Helvetica, sans-serif; font-size: 12pt; font-weight: bold; }
 h1 a.small:before { content: '[' }
