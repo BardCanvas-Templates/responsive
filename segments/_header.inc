@@ -54,7 +54,7 @@ if( empty($bgcolor) ) $bgcolor = "transparent";
 ?>
 
 <div id="responsible_custom_header" style="background-color: <?= $bgcolor ?>;">
-    <a class="logo" href="<?= $config->full_root_path ?>">
+    <a class="logo" href="<?= $config->full_root_path ?>/">
         <? if( ! empty($image) ): ?>
             <img class="image" src="<?= $image ?>">
         <? endif; ?>
