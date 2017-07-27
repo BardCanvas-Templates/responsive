@@ -171,7 +171,7 @@
             <title>Background image size</title>
             <description><![CDATA[
                 Specify a sizing directive for the body background image.
-                In both cases, the aspect ratio is kept.
+                In all cases, the aspect ratio is kept.
             ]]></description>
             <type>list</type>
             <options>
@@ -204,7 +204,7 @@
             <title>Disable this template footer?</title>
             <description><![CDATA[
                 By default, the template footer is enabled and shown when contents are defined.
-                This footer is an addition to the standard footer it doesn't replace it, just adds
+                This footer is an addition to the standard footer... it doesn't replace it, just adds
                 a few sections above it for the Home and Main layouts.
             ]]></description>
             <type>yes/no</type>
@@ -252,7 +252,7 @@
         </specs>
         
         <specs key="footer_links_row_left">
-            <title>Contents for links row, left side</title>
+            <title>Lower links row, left side</title>
             <description><![CDATA[
                 This row is rendered below the previous sections and it behaves in the same way
                 as the Slogan/links panel of the header, so the list of links is not rendered
@@ -268,13 +268,10 @@
         </specs>
         
         <specs key="footer_links_row_right">
-            <title>Contents for links row, left side</title>
+            <title>Lower links row, right side</title>
             <description><![CDATA[
-                This row is rendered below the previous sections and it behaves in the same way
-                as the Slogan/links panel of the header, so the list of links is not rendered
-                as a bullets list, but as inline elements separated by a pipe character (<code>|</code>).<br><br>
-                
-                The syntax is the same as above.
+                This part will only recognize branding icons from a list using the same directives
+                as the left side.
             ]]></description>
             <type>code</type>
         </specs>
@@ -284,7 +281,7 @@
             <description><![CDATA[
                 Use this section as a "Get in touch" invitation.<br><br>
                 
-                The first line is used as title for the row, and the rest as a normal paragraph.
+                The first line is used as title for the section, and the rest as a normal paragraph.
             ]]></description>
             <type>code</type>
         </specs>
