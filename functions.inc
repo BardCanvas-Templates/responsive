@@ -46,13 +46,20 @@ function build_reponsive_body_style()
     $bgpos    = $settings->get("templates:responsive.body_background_image_position");
     $bgsize   = $settings->get("templates:responsive.body_background_image_size");
     $bgimage  = $settings->get("templates:responsive.body_background_image");
-    $bgrepeat = $settings->get("templates:responsive.body_background_image_repeat") == "true"
-              ? "repeat" : "no-repeat";
+    $bgrepeat = $settings->get("templates:responsive.body_background_image_repeat");
     
     if( empty($bgcolor)  ) $bgcolor = "white";
     if( empty($bgimage)  ) $bgimage = "none"; else $bgimage = "url('$bgimage')";
     if( empty($bgpos)    ) $bgpos   = "top left";
     if( empty($bgsize)   ) $bgsize  = "contain";
     
-    return "background: $bgcolor $bgimage $bgpos $bgrepeat; background-size: $bgsize;";
+    if( empty($bgrepeat) ) $bgrepeat = "repeat";
+    $attachment = "";
+    if( $bgrepeat == "fixed" )
+    {
+        $bgrepeat   = "no-repeat";
+        $attachment = "background-attachment: fixed;";
+    }
+    
+    return "background: $bgcolor $bgimage $bgpos $bgrepeat; background-size: $bgsize; $attachment";
 }

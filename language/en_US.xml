@@ -165,17 +165,27 @@
             ]]></description>
             <type>list</type>
             <options>
-                <option value="contain">Contain in the viewport, no cropping (default)</option>
-                <option value="cover"  >Cover the entire viewport, cropping the edges if needed</option>
+                <option value="contain"  >Contain in the viewport, no cropping (default)</option>
+                <option value="cover"    >Cover the entire viewport, cropping the edges if needed</option>
+                <option value="auto"     >No resizing</option>
+                <option value="50vw auto">50% of the viewport width</option>
+                <option value="auto 50vh">50% of the viewport height</option>
             </options>
         </specs>
         
         <specs key="body_background_image_repeat">
-            <title>Repeat body background image?</title>
+            <title>Background image repetition</title>
             <description><![CDATA[
-                By default, it isn't repeated.
+                How do you want the image to be repeated?
             ]]></description>
-            <type>yes/no</type>
+            <type>list</type>
+            <options>
+                <option value="repeat"   >Tile across the page</option>
+                <option value="repeat-x" >Repeat horizontally</option>
+                <option value="repeat-y" >Repeat vertically</option>
+                <option value="no-repeat">No repetition (show once)</option>
+                <option value="fixed"    >Keep fixed (not scrollable)</option>
+            </options>
         </specs>
         
     </settings_data>
