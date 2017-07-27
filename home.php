@@ -43,20 +43,20 @@ header("Content-Type: text/html; charset=utf-8"); ?>
     <? include ROOTPATH . "/includes/common_header.inc" ?>
     
     <!-- This template -->
-    <link rel="stylesheet" type="text/css" href="<?= $template->url ?>/media/styles~v<?= time() ?>.css">
-    <link rel="stylesheet" type="text/css" href="<?= $template->url ?>/media/post_styles~v<?= time() ?>.css">
-    <link rel="stylesheet" type="text/css" href="<?= $template->url ?>/media/colors~v<?= time() ?>.css">
-    <link rel="stylesheet" type="text/css" href="<?= $template->url ?>/media/extras~v<?= time() ?>.css">
+    <link rel="stylesheet" type="text/css" href="<?= $template->url ?>/media/styles~v1.0.0-1.css">
+    <link rel="stylesheet" type="text/css" href="<?= $template->url ?>/media/post_styles~v1.0.0-1.css">
+    <link rel="stylesheet" type="text/css" href="<?= $template->url ?>/media/colors~v1.0.0-1.css">
+    <link rel="stylesheet" type="text/css" href="<?= $template->url ?>/media/extras~v1.0.0-1.css">
     
     <? if( $template->count_left_sidebar_groups() > 0 ): ?>
         <!-- Left sidebar -->
-        <link rel="stylesheet" type="text/css" href="<?= $template->url ?>/media/left_sidebar_addon~v<?= time() ?>.css">
-        <script type="text/javascript"          src="<?= $template->url ?>/media/left_sidebar_addon~v<?= time() ?>.js"></script>
+        <link rel="stylesheet" type="text/css" href="<?= $template->url ?>/media/left_sidebar_addon~v1.0.0-1.css">
+        <script type="text/javascript"          src="<?= $template->url ?>/media/left_sidebar_addon~v1.0.0-1.js"></script>
     <? endif; ?>
     
     <? if( $template->count_right_sidebar_items() > 0 ): ?>
         <!-- Right sidebar -->
-        <link rel="stylesheet" type="text/css" href="<?= $template->url ?>/media/right_sidebar_addon~v<?= time() ?>.css">
+        <link rel="stylesheet" type="text/css" href="<?= $template->url ?>/media/right_sidebar_addon~v1.0.0-1.css">
     <? endif; ?>
     
     <!-- Always-on -->
