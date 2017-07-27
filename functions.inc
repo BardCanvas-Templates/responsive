@@ -63,3 +63,39 @@ function build_reponsive_body_style()
     
     return "background: $bgcolor $bgimage $bgpos $bgrepeat; background-size: $bgsize; $attachment";
 }
+
+function parse_responsive_links_list($links)
+{
+    if( empty($links) ) return "";
+    
+    $items   = array();
+    $lines   = explode("\n", $links);
+    foreach($lines as $line)
+    {
+        $line = trim($line);
+        if( empty($line) ) continue;
+        if( substr($line, 0, 1) != "*" )
+        {
+            $items[] = $line;
+            
+            continue;
+        }
+        
+        if( ! preg_match('/\*\s*([\w:@]*)\s*(.*)/', $line, $matches) )
+        {
+            $items[] = $line;
+            
+            continue;
+        }
+        
+        $href    = $matches[2];
+        $target  = preg_match('/http|https|callto|mailto/i', $href) ? "_blank" : "_self";
+        $caption = rtrim($matches[1], ":");
+        $caption = substr($caption, 0, 1) != "@" ? $caption
+                 : ("<i class='icon fa-stack fa-lg'><i class='fa fa-square fa-stack-2x'></i><i class='fa fa-" . str_replace("@", "", $caption) . " fa-stack-1x fa-inverse'></i></i>");
+        
+        $items[] = "<a href='{$href}' target='$target'><span>{$caption}</span></a>";
+    }
+    
+    return implode("\n", $items);
+}
