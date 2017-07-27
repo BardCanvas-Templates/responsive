@@ -77,6 +77,21 @@
             <type>text</type>
         </specs>
         
+        <specs key="header_text_style">
+            <title>Text style</title>
+            <description><![CDATA[
+                Control appearance of the text. Pick a combination depending on the background settings.
+            ]]></description>
+            <type>list</type>
+            <options>
+                <option value="">Default (dark text)</option>
+                <option value="responsive_dark_shadowed">Dark text with drop shadows</option>
+                <option value="responsive_white_shadowed">White text with drop shadows</option>
+                <option value="responsive_white_outlined">White text with dark outlines</option>
+                <option value="responsive_white_remarked">White text with dark outlines and drop shadows</option>
+            </options>
+        </specs>
+        
         <specs key="header_links_panel">
             <title>Slogan/Links panel</title>
             <description><![CDATA[
