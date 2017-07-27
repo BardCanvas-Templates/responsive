@@ -90,6 +90,9 @@
 #responsible_custom_header.responsive_white_shadowed .links_panel .links a     { color: white; }
 #responsible_custom_header.responsive_white_shadowed .links_panel .links .icon { color: #0066cc; }
 #responsible_custom_header.responsive_white_shadowed .links_panel .links .icon .fa-inverse { text-shadow: none; }
+#footer.responsive_white_shadowed              { color: white; }
+#footer.responsive_white_shadowed a            { color: white; }
+#footer.responsive_white_shadowed .pseudo_link { color: white; }
 
 .responsive_white_outlined {
     font-weight: bold;
@@ -104,6 +107,9 @@
 #responsible_custom_header.responsive_white_outlined .links_panel .links a     { color: white; }
 #responsible_custom_header.responsive_white_outlined .links_panel .links .icon { color: #0066cc; }
 #responsible_custom_header.responsive_white_outlined .links_panel .links .icon .fa-inverse { text-shadow: none; }
+#footer.responsive_white_outlined              { color: white; }
+#footer.responsive_white_outlined a            { color: white; }
+#footer.responsive_white_outlined .pseudo_link { color: white; }
 
 .responsive_white_remarked {
     font-weight: bold;
@@ -119,3 +125,6 @@
 #responsible_custom_header.responsive_white_remarked .links_panel .links a     { color: white; }
 #responsible_custom_header.responsive_white_remarked .links_panel .links .icon { color: #0066cc; }
 #responsible_custom_header.responsive_white_remarked .links_panel .links .icon .fa-inverse { text-shadow: none; }
+#footer.responsive_white_remarked              { color: white; }
+#footer.responsive_white_remarked a            { color: white; }
+#footer.responsive_white_remarked .pseudo_link { color: white; }

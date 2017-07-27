@@ -171,8 +171,12 @@ header("Content-Type: text/html; charset=utf-8"); ?>
     }
     ?>
     
-    <? if($config->display_performance_details && EMBED_INTERNALS): ?>
-        <div id="footer">
+    <? if($config->display_performance_details && EMBED_INTERNALS):
+        $footer_class   = $settings->get("templates:responsive.footer_text_style");
+        $footer_bgcolor = $settings->get("templates:responsive.footer_background_color");
+        if( ! empty($footer_bgcolor) ) $footer_bgcolor = "background-color: $footer_bgcolor;";
+        ?>
+        <div id="footer" class="<?= $footer_class ?>" style="<?= $footer_bgcolor ?>">
             <div class="footer_contents" align="center">
                 <?
                 if( $config->query_tracking_enabled ) echo "
