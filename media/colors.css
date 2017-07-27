@@ -10,9 +10,13 @@
 
 body { background-color: white; color: #555555; }
 
-h1 { color: #0066cc; }
-h2 { color: #0066cc; }
-h3 { color: #0066cc; }
+h1 { color: #555555; }
+h2 { color: #555555; }
+h3 { color: #555555; }
+
+a h1 { color: #0066cc; }
+a h2 { color: #0066cc; }
+a h3 { color: #0066cc; }
 
 a:link,            .pseudo_link                            { color: #0066cc; }
 a:active, a:hover, .pseudo_link:active, .pseudo_link:hover { color: #444444; }
