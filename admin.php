@@ -68,7 +68,8 @@ header("Content-Type: text/html; charset=utf-8"); ?>
       data-is-mobile="<?= is_mobile() ? "true" : "false" ?>"
       data-is-known-user="<?= $account->_exists ? "true" : "false" ?>"
       data-user-slug="<?= $account->user_name ?>"
-      data-user-level="<?= $account->level ?>">
+      data-user-level="<?= $account->level ?>"
+      style="<?= build_reponsive_body_style() ?>">
 
 <div id="body_wrapper">
     

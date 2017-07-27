@@ -35,7 +35,7 @@
         <specs key="disable_header">
             <title>Disable this template header?</title>
             <description><![CDATA[
-                By default, the template header is enabled.
+                By default, the template header is enabled and shown when contents are defined.
                 If you're using a customizable header module, you should either
                 disable it and use the included customization below or select "Yes"
                 to disable this template's header.
@@ -116,10 +116,7 @@
             <description><![CDATA[
                 Specify an HTML color to use as the body background,
                 E.G. <code>white</code> or <code>#FFFFFF</code>.
-                Defaults to <code>white</code>.<br>
-                <i class="fa fa-info-circle"></i>
-                This setting only affects the frontend layouts
-                (Home and Main). It is skipped on the helper layouts (Admin, Popup and others).
+                Defaults to <code>white</code>.
             ]]></description>
             <type>text</type>
         </specs>
@@ -127,10 +124,7 @@
         <specs key="body_background_image">
             <title>Background image</title>
             <description><![CDATA[
-                Specify an image to set as background.<br>
-                <i class="fa fa-info-circle"></i>
-                This setting only affects the frontend layouts
-                (Home and Main). It is skipped on the helper layouts (Admin, Popup and others).
+                Specify an image to set as background
             ]]></description>
             <type>@gallery:specs_renderer/image_selector</type>
             <options>
