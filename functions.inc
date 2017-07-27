@@ -64,11 +64,13 @@ function build_reponsive_body_style()
     return "background: $bgcolor $bgimage $bgpos $bgrepeat; background-size: $bgsize; $attachment";
 }
 
-function parse_responsive_links_list($links)
+function parse_responsive_links_list($links, $using_bullets = false)
 {
     if( empty($links) ) return "";
     
     $items   = array();
+    if( $using_bullets ) $items[] = "<ul>";
+    
     $lines   = explode("\n", $links);
     foreach($lines as $line)
     {
@@ -81,21 +83,44 @@ function parse_responsive_links_list($links)
             continue;
         }
         
-        if( ! preg_match('/\*\s*([\w:@]*)\s*(.*)/', $line, $matches) )
+        $pos = strpos($line, ":");
+        if( $pos === false )
         {
             $items[] = $line;
             
             continue;
         }
         
-        $href    = $matches[2];
+        $caption = trim(substr($line, 0, $pos),  "* :");
+        $href    = trim(substr($line, $pos + 1), "* :");
         $target  = preg_match('/http|https|callto|mailto/i', $href) ? "_blank" : "_self";
-        $caption = rtrim($matches[1], ":");
         $caption = substr($caption, 0, 1) != "@" ? $caption
-                 : ("<i class='icon fa-stack fa-lg'><i class='fa fa-square fa-stack-2x'></i><i class='fa fa-" . str_replace("@", "", $caption) . " fa-stack-1x fa-inverse'></i></i>");
+                 : ("<i class='icon fa-stack fa-lg'><i class='fa fa-square fa-stack-2x'></i><i class='fa fa-" . trim($caption, "@: ") . " fa-stack-1x fa-inverse'></i></i>");
         
-        $items[] = "<a href='{$href}' target='$target'><span>{$caption}</span></a>";
+        $items[] = ($using_bullets ? "<li>" : "")
+                 . "<a href='{$href}' target='$target'><span>{$caption}</span></a>"
+                 . ($using_bullets ? "</li>" : "");
     }
     
+    if( $using_bullets ) $items[] = "</ul>";
+    
     return implode("\n", $items);
+}
+
+function separate_responsive_footer_section($contents)
+{
+    $lines   = explode("\n", $contents);
+    $title   = "";
+    
+    if( count($lines) == 1 )
+    {
+        $content = $lines[0];
+    }
+    else
+    {
+        $title   = array_shift($lines);
+        $content = implode("\n", $lines);
+    }
+    
+    return array($title, $content);
 }
