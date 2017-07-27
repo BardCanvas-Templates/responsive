@@ -67,7 +67,7 @@ if( "{$rl}{$rr}" != "" )
     if(       empty($rl) && ! empty($rr) ) $dclass = "alignright";
     elseif( ! empty($rl) && ! empty($rr) ) $dclass = "clearfix";
     
-    $markup = "<div class='responsive_footer row3'><div class='content_frame $dclass'>";
+    $markup = "<div class='responsive_footer row2'><div class='content_frame $dclass'>";
     
     if( ! empty($rl) ) $markup .= "<div class='panel left'>" . parse_responsive_links_list($rl) . "</div>";
     if( ! empty($rr) ) $markup .= "<div class='panel right'>" . parse_responsive_links_list($rr) . "</div>";

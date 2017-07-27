@@ -55,21 +55,21 @@
     .responsive_footer.cols-2 .col         { width: calc(50% -  7px); }
 }
 
-.responsive_footer.row3 .content_frame                { text-transform: uppercase; line-height: 26px; }
-.responsive_footer.row3 .content_frame .panel         { display: inline-block; }
-.responsive_footer.row3 .content_frame .panel.right   { float: right; }
-.responsive_footer.row3 .content_frame .panel a       { display: inline-block; font-size: 12px; color: #0066cc;
+.responsive_footer.row2 .content_frame                { text-transform: uppercase; line-height: 26px; }
+.responsive_footer.row2 .content_frame .panel         { display: inline-block; }
+.responsive_footer.row2 .content_frame .panel.right   { float: right; }
+.responsive_footer.row2 .content_frame .panel a       { display: inline-block; font-size: 12px; color: #0066cc;
                                                         vertical-align: top; }
-.responsive_footer.row3 .content_frame .panel a:hover { color: #444444; }
-.responsive_footer.row3 .content_frame .panel a span  { display: inline-block; padding: 5px; vertical-align: middle; }
-.responsive_footer.row3 .content_frame .panel .icon   { font-size: 12px; position: relative; top: -2px; }
+.responsive_footer.row2 .content_frame .panel a:hover { color: #444444; }
+.responsive_footer.row2 .content_frame .panel a span  { display: inline-block; padding: 5px; vertical-align: middle; }
+.responsive_footer.row2 .content_frame .panel .icon   { font-size: 12px; position: relative; top: -2px; }
 
-.responsive_footer.row3 .content_frame .panel.left a:after            { content: ' | '; }
-.responsive_footer.row3 .content_frame .panel.left a:last-child:after { content: '';    }
+.responsive_footer.row2 .content_frame .panel.left a:after            { content: ' | '; }
+.responsive_footer.row2 .content_frame .panel.left a:last-child:after { content: '';    }
 
 @media all and (max-width: 709px) {
-    .responsive_footer.row3 .content_frame              { text-align: center; }
-    .responsive_footer.row3 .content_frame .panel.right { float: none; }
+    .responsive_footer.row2 .content_frame              { text-align: center; }
+    .responsive_footer.row2 .content_frame .panel.right { float: none; }
 }
 
 /*         */
