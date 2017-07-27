@@ -30,8 +30,89 @@
     <settings_data>
         <title>Responsive template</title>
         
+        <specs is_separator="true">Header</specs>
+        
+        <specs key="disable_header">
+            <title>Disable this template header?</title>
+            <description><![CDATA[
+                By default, the template header is enabled.
+                If you're using a customizable header module, you should either
+                disable it and use the included customization below or select "Yes"
+                to disable this template's header.
+            ]]></description>
+            <type>yes/no</type>
+        </specs>
+        
+        <specs key="header_logo_text">
+            <title>Header logo text</title>
+            <description><![CDATA[
+                Type a short caption to use as logo text if you don't have an image logo.
+                It will be rendered at the left of the header.
+            ]]></description>
+            <type>text</type>
+        </specs>
+        
+        <specs key="header_logo_image">
+            <title>Header logo icon/image</title>
+            <description><![CDATA[
+                If you have a logo icon, you can select it here and have it rendered at the
+                left of the logo text specified above.<br>
+                If you have a logo image, you can leave the logo text empty and specify the logo here.<br>
+                <i class="fa fa-info-circle"></i>
+                The icon or logo should have a height no bigger than 200px. It will be resized keeping the aspect ratio.
+            ]]></description>
+            <type>@gallery:specs_renderer/image_selector</type>
+            <options>
+                <image_size>full</image_size>
+            </options>
+        </specs>
+        
+        <specs key="header_background_color">
+            <title>Background Color</title>
+            <description><![CDATA[
+                Specify an HTML color to use as the header background area,
+                E.G. <code>white</code> or <code>#FFFFFF</code>.
+                Defaults to <code>transparent</code>.
+            ]]></description>
+            <type>text</type>
+        </specs>
+        
+        <specs key="header_links_panel">
+            <title>Slogan/Links panel</title>
+            <description><![CDATA[
+                You can add a slogan or links to local pages, external URLs or social network icons
+                at the right of the logo.<br><br>
+                If you decide to use a slogan, just type it in the code box.<br>
+                If you decide to show links here, type a list using the next syntax:
+                
+                <pre>* Caption:     <code>/local-path</code>
+* Caption:     <code>http://external-site.com</code>
+* @brand-icon: <code>http://well-known-brand-site.com</code></pre>
+                
+                As you may notice, every link must be placed on a single line and started with an
+                asterisk, like a bullet list.<br><br>
+                
+                Whatever you type as caption is shown as the link to either the path or the URL.<br><br>
+                
+                If instead of caption you type <code>@brand-icon</code>, the corresponding brand
+                icon from the Font Awesome icon set will be rendered as caption.
+                <a href="http://fontawesome.io/icons/#brand" target="_blank">Full reference here</a>.
+                <br><br>
+                
+                Examples:
+                <pre>* Home:      /
+* Contact:   /contact
+* @facebook: https://www.facebook.com/BardCanvas
+* @twitter:  https://twitter.com/BardCanvas
+* @linkedin: https://www.linkedin.com/company-beta/2447840/</pre>
+            ]]></description>
+            <type>code</type>
+        </specs>
+        
+        <specs is_separator="true">Body appearance</specs>
+        
         <specs key="body_background_color">
-            <title>Body Background Color</title>
+            <title>Background Color</title>
             <description><![CDATA[
                 Specify an HTML color to use as the body background,
                 E.G. <code>white</code> or <code>#FFFFFF</code>.
@@ -44,7 +125,7 @@
         </specs>
         
         <specs key="body_background_image">
-            <title>Body background image</title>
+            <title>Background image</title>
             <description><![CDATA[
                 Specify an image to set as background.<br>
                 <i class="fa fa-info-circle"></i>
@@ -58,7 +139,7 @@
         </specs>
         
         <specs key="body_background_image_position">
-            <title>Body background image position</title>
+            <title>Background image position</title>
             <description><![CDATA[
                 Only used when the body background image is specified.
             ]]></description>
@@ -77,7 +158,7 @@
         </specs>
         
         <specs key="body_background_image_size">
-            <title>Body background image size</title>
+            <title>Background image size</title>
             <description><![CDATA[
                 Specify a sizing directive for the body background image.
                 In both cases, the aspect ratio is kept.
