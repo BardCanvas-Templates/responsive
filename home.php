@@ -101,6 +101,8 @@ header("Content-Type: text/html; charset=utf-8"); ?>
                 $this_module = $modules[$module];
                 include "{$this_module->abspath}/contents/{$include}";
             }
+            
+            include __DIR__ . "/segments/_header.inc";
             ?>
         </div>
         
@@ -199,8 +201,6 @@ header("Content-Type: text/html; charset=utf-8"); ?>
         $this_module = $modules[$module];
         include "{$this_module->abspath}/contents/{$include}";
     }
-    
-    include __DIR__ . "/segments/_footer.inc";
     ?>
     
     <div id="footer">
