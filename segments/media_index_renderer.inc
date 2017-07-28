@@ -32,19 +32,57 @@ $this_module = $modules["gallery"];
                  data-main-category="<?= $item->main_category_slug ?>"
                  data-author-role="<?= $author->get_role(true) ?>" data-author-level="<?= $author->level ?>">
             
-            <div class="meta_box clearfix">
+            <!-- Category and hashtags -->
+            <div class="meta_box">
+                <a class="meta_field" href="<?= $config->full_root_url ?>/category/<?= $item->main_category_slug ?>/">
+                    <?= replace_escaped_objects(
+                        $template->language->posted_in,
+                        array('{$category}' => $item->main_category_title)
+                    ) ?>
+                </a>
                 
-                <img class="user_avatar" src="<?= $author->get_avatar_url() ?>">
+                <? if( $item->main_category_visibility == "level_based" && ! empty($item->main_category_min_level) ): ?>
+                    <span class="meta_field important">
+                        <span class="fa fa-users"></span>
+                            <?= $config->user_levels_by_level[$item->main_category_min_level]; ?>
+                        </span>
+                <? elseif( $item->visibility == "level_based" ): ?>
+                    <span class="meta_field important">
+                        <span class="fa fa-users"></span>
+                            <?= $config->user_levels_by_level[$item->author_level]; ?>
+                        </span>
+                <? endif; ?>
                 
-                <div class="meta_section upper">
-                    <a class="meta_field user_display_name" data-user-level="<?= $author->level ?>"
-                       href="<?= $config->full_root_url ?>/user/<?= $author->user_name ?>/">
-                        <span class="fa fa-user fa-fw"></span>
-                        <?= $author->get_processed_display_name() ?>
+                <? foreach( $item->get_filtered_tags_list() as $tag): ?>
+                    <a class="meta_field" href="<?= $config->full_root_path ?>/tag/<?= $tag ?>" target="_blank">
+                        <span class="fa fa-hashtag"></span>
+                        <?= $tag ?>
                     </a>
+                <? endforeach; ?>
+            </div>
+            
+            <!-- Title -->
+            <a href="<?= $item->get_page_url() ?>">
+                <h1><?= $item->get_processed_title(false) ?></h1>
+            </a>
+            
+            <!-- Author meta -->
+            <div class="meta_box">
+                <div class="meta_section">
+                    <?
+                    $date        = date("Y/m/d", strtotime($item->publishing_date));
+                    $date_string = time_complete_string($item->publishing_date) . " (" . time_elapsed_string($item->publishing_date) . ")";
+                    echo replace_escaped_objects(
+                        $template->language->posted_on_by, array(
+                        '{$date}'   => "<a class='meta_field' href='{$config->full_root_url}/date/{$date}/'>{$date_string}</a>",
+                        '{$author}' => "<a class='meta_field user_display_name' data-user-level='{$author->level}'
+                                                   href='{$config->full_root_url}/user/{$author->user_name}/'>
+                                                    <span class='fa fa-user fa-fw'></span> {$author->get_processed_display_name()}
+                                                </a>",
+                    )) ?>
                     
                     <? if($account->level >= config::COADMIN_USER_LEVEL && $account->id_account != $author->id_account): ?>
-                        <span class="meta_field critical pseudo_link" onclick="if(confirm($_GENERIC_CONFIRMATION)) toggle_account( '<?= $author->id_account ?>', 'disable', this )">
+                        <span class="meta_field critical pseudo_link disable_user_link" onclick="if(confirm($_GENERIC_CONFIRMATION)) toggle_account( '<?= $author->id_account ?>', 'disable', this )">
                             <span class="fa fa-lock"></span>
                             <?= $language->disable ?>
                         </span>
@@ -56,71 +94,42 @@ $this_module = $modules["gallery"];
                             </span>
                             <span class="target" style="display: none;"></span>
                         </span>
-                        
+            
                         <?= $author->get_pm_sending_link($language->contact->pm->caption, "meta_field critical pseudo_link") ?>
                     <? endif; ?>
                     
-                    <a class="meta_field" href="<?= $config->full_root_url ?>/category/<?= $item->main_category_slug ?>/">
-                        <span class="fa fa-folder fa-fw"></span>
-                        <?= $item->main_category_title ?>
-                    </a>
-                    <? if( $item->main_category_visibility == "level_based" && ! empty($item->main_category_min_level) ): ?>
-                        <span class="meta_field important">
-                            <span class="fa fa-users"></span>
-                            <?= $config->user_levels_by_level[$item->main_category_min_level]; ?>
-                        </span>
-                    <? elseif( $item->visibility == "level_based" ): ?>
-                        <span class="meta_field important">
-                            <span class="fa fa-users"></span>
-                            <?= $config->user_levels_by_level[$item->author_level]; ?>
-                        </span>
-                    <? endif; ?>
-                    
-                    <? foreach( $item->get_filtered_tags_list() as $tag): ?>
-                        <a class="meta_field" href="<?= $config->full_root_path ?>/tag/<?= $tag ?>/media" target="_blank">
-                            <span class="fa fa-hashtag"></span>
-                            <?= $tag ?>
-                        </a>
-                    <? endforeach; ?>
+                    <? $this_module->load_extensions("front", "index_renderer_item_meta_fields_upper"); ?>
                 </div>
-                <div class="meta_section">
-                    <a class="meta_field dimmed" href="<?= $config->full_root_url ?>/date/<?= date("Y/m/d", strtotime($item->publishing_date)) ?>/">
-                        <span class="fa fa-calendar fa-fw"></span>
-                        <?= time_today_string($item->publishing_date) . " (" . time_elapsed_string($item->publishing_date) . ")" ?>
-                    </a>
-                    
-                    <? if( $account->level >= config::MODERATOR_USER_LEVEL ): ?>
-                        <span class="meta_field critical">
-                            <span class="fa fa-eye fa-fw"></span>
-                            <?= number_format($item->views); ?>
-                        </span>
-                    <? endif; ?>
-                </div>
-            
             </div>
             
-            <a href="<?= $item->get_page_url() ?>">
-                <h1><?= $item->get_processed_title(false) ?></h1>
-                <div class="post_featured_image thumbnail <?= $item->type ?>">
+            <div class="post_featured_image thumbnail <?= $item->type ?>" style="display: block; float: none; width: 100%; height: auto;">
+                <a href="<?= $item->get_page_url() ?>">
                     <? if( $item->type == "image"): ?>
                         <img src="<?= $item->get_thumbnail_url() ?>">
                     <? else: ?>
                         <img class="windowed_image" src="<?= $config->full_root_path ?>/media_toolbox/render_blank_thumbnail"
                              style="background-image: url('<?= $item->get_thumbnail_url() ?>')">
                     <? endif; ?>
-                </div>
-            </a>
+                </a>
+            </div>
             
-            <div class="post_contents post_excerpt">
-                <?= $item->get_description_excerpt() ?>
+            <div class="post_contents post_excerpt" style="display: block; float: none; width: 100%;">
+                <?
+                $excerpt= $item->get_description_excerpt();
+                if( ! empty($excerpt) ) echo "$excerpt<br><br>";
+                ?>
                 <? if( $account->level >= config::MODERATOR_USER_LEVEL ): ?>
+                    <span class="meta_field critical">
+                        <span class="fa fa-eye fa-fw"></span>
+                        <?= number_format($item->views); ?>
+                    </span>
                     <a class="greengo inline-block" href="<?= $config->full_root_path ?>/gallery/?edit_item=<?= $item->id_media ?>&wasuuup=<?= md5(mt_rand(1, 65535)) ?>"
                        ><span class="fa fa-pencil fa-fw"></span><?= $language->edit ?></a>
-                <? endif; ?>
-                <? if( $item->can_be_deleted() ): ?>
-                    <span class="critical pseudo_link inline-block"
-                          onclick="if( confirm($_GENERIC_CONFIRMATION) ) trash_media('<?= $item->id_media ?>', this, function() { $('article[data-post-id=<?= $item->id_post ?>]').fadeOut('fast', function() { $(this).remove(); }) })"
-                          ><span class="fa fa-trash fa-fw"></span><?= $current_module->language->record_nav->actions->trash ?></span>
+                    <? if( $item->can_be_deleted() ): ?>
+                        <span class="critical pseudo_link inline-block"
+                              onclick="if( confirm($_GENERIC_CONFIRMATION) ) trash_media('<?= $item->id_media ?>', this, function() { $('article[data-post-id=<?= $item->id_post ?>]').fadeOut('fast', function() { $(this).remove(); }) })"
+                              ><span class="fa fa-trash fa-fw"></span><?= $current_module->language->record_nav->actions->trash ?></span>
+                    <? endif; ?>
                 <? endif; ?>
             </div>
             
