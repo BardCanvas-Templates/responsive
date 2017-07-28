@@ -47,7 +47,7 @@ header("Content-Type: text/html; charset=utf-8"); ?>
     
     <? if( $settings->get("engine.hide_left_sidebar_on_admin_pages") != "true" && $template->count_left_sidebar_groups() > 0 ): ?>
         <!-- Left sidebar -->
-        <link rel="stylesheet" type="text/css" href="<?= $template->url ?>/media/left_sidebar_addon~v1.0.0-1.css">
+        <link rel="stylesheet" type="text/css" href="<?= $template->url ?>/media/left_sidebar_addon~v1.0.1-3.css">
         <script type="text/javascript"          src="<?= $template->url ?>/media/left_sidebar_addon~v1.0.0-1.js"></script>
     <? endif; ?>
     
