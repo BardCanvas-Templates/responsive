@@ -19,6 +19,7 @@ if( "{$text}{$image}" == "" ) return;
 
 $links = parse_responsive_links_list($links);
 if( empty($bgcolor) ) $bgcolor = "transparent";
+if( ! empty($text) ) $class .= " clearfix";
 ?>
 
 <div id="responsible_custom_header" class="<?= $class ?>" style="background-color: <?= $bgcolor ?>;">
@@ -35,7 +36,6 @@ if( empty($bgcolor) ) $bgcolor = "transparent";
     <? if( ! empty($links) ): ?>
         <div class="links_panel">
             <div class="links"><?= $links ?></div>
-            <br clear="left">
         </div>
     <? endif; ?>
 </div>
