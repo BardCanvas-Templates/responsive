@@ -55,7 +55,7 @@ header("Content-Type: text/html; charset=utf-8"); ?>
     
     <? if( $template->count_right_sidebar_items() > 0 ): ?>
         <!-- Right sidebar -->
-        <link rel="stylesheet" type="text/css" href="<?= $template->url ?>/media/right_sidebar_addon~v1.0.0-1.css">
+        <link rel="stylesheet" type="text/css" href="<?= $template->url ?>/media/right_sidebar_addon~v1.0.1-1.css">
     <? endif; ?>
     
     <!-- Always-on -->
@@ -77,7 +77,9 @@ header("Content-Type: text/html; charset=utf-8"); ?>
       data-is-known-user="<?= $account->_exists ? "true" : "false" ?>"
       data-user-slug="<?= $account->user_name ?>"
       data-user-level="<?= $account->level ?>"
-      style="<?= build_reponsive_body_style() ?>">
+      style="<?= build_reponsive_body_style() ?>"
+      data-has-left-sidebar="<?= $template->count_left_sidebar_groups() > 0 ? "true" : "false" ?>"
+      data-has-right-sidebar="<?= $template->count_right_sidebar_items() > 0 ? "true" : "false" ?>">
 
 <div id="body_wrapper">
     
