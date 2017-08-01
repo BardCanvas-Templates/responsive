@@ -1,6 +1,10 @@
 
 # Responsive Template Change Log
 
+## [1.1.2] - 2017-08-01
+
+- Color and layout fixes.
+
 ## [1.1.1] - 2017-07-31
 
 - Fixed display issues when the left sidebar is hidden.
