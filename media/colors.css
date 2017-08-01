@@ -153,9 +153,9 @@ a:hover h1,    .pseudo_link:hover h1, a:hover h1,    .pseudo_link:hover h2, a:ho
                                                            -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#808080, endColorstr=#363636)";
                                                          }
 
-section > h1 { color: white; background-color: #0066cc; border-color: #E5E5E5; }
-section > h2 { color: white; background-color: #0066cc; border-color: #E5E5E5; }
-section > h3 { color: white; background-color: #0066cc; border-color: #E5E5E5; }
+section > h1 { color: white; background-color: #0066cc; border-color: #0066cc; }
+section > h2 { color: white; background-color: #0066cc; border-color: #0066cc; }
+section > h3 { color: white; background-color: #0066cc; border-color: #0066cc; }
 
 section > h1 a, section > h1 .pseudo_link, section > h1 .pseudo_link:hover { color: white; }
 section > h2 a, section > h2 .pseudo_link, section > h2 .pseudo_link:hover { color: white; }
@@ -193,3 +193,19 @@ h3 a.framed_content, h3 .pseudo_link.framed_content { color: #0066cc; text-decor
 body.admin h1 a.framed_content, body.admin h1 .pseudo_link.framed_content { color: #0066cc; text-decoration: none; }
 body.admin h2 a.framed_content, body.admin h2 .pseudo_link.framed_content { color: #0066cc; text-decoration: none; }
 body.admin h3 a.framed_content, body.admin h3 .pseudo_link.framed_content { color: #0066cc; text-decoration: none; }
+
+/* User profile styles */
+
+#user_profile_heading           { background-color: #0066cc; }
+#user_profile_tabs .tab         { color: #0066cc; }
+#user_profile_tabs .tab.current { color: white; background-color: #0066cc; }
+
+/* Media lists on record browsers */
+
+.media_bullet                               { color: dodgerblue; }
+.media_bullet a, .media_bullet .pseudo_link { color: dodgerblue; }
+
+/* Pinned posts and special posts */
+
+article.pinned,  .featured_post.pinned  { border: 2px solid #0066cc;    border-left: 6px solid #0066cc;    background-color: whitesmoke; }
+article.special, .featured_post.special { border: 2px solid dodgerblue; border-left: 6px solid dodgerblue; background-color: lightyellow; }
