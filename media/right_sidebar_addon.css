@@ -30,6 +30,7 @@ body[data-has-left-sidebar="false"] #content { width: calc(100% - 220px); }
 {
     /* Hidden for small displays (below 720px) */
     #content       { width: calc(100% - 150px) }
+    body[data-has-left-sidebar="false"] #content { width: 100%; float: none; }
     #right_sidebar { width: 100%; float: none; padding-left: 0; }
     
     #user_info_sections { -moz-column-count:    1; -webkit-column-count:   1; column-count:   1; }
@@ -40,6 +41,7 @@ body[data-has-left-sidebar="false"] #content { width: calc(100% - 220px); }
     /* Left sidebar is hidden here. Right sidebar goes below. 
        We must adjust the content width. */
     #content { width: 100%; float: none; }
+    body[data-has-left-sidebar="false"] #content { width: 100%; float: none; }
     
     #user_info_sections { -moz-column-count:    1; -webkit-column-count:   1; column-count:   1; }
 }
