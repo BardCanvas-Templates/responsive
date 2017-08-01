@@ -45,7 +45,7 @@ header("Content-Type: text/html; charset=utf-8"); ?>
     <!-- This template -->
     <link rel="stylesheet" type="text/css" href="<?= $template->url ?>/media/styles~v1.0.0-1.css">
     <link rel="stylesheet" type="text/css" href="<?= $template->url ?>/media/post_styles~v1.0.1-2.css">
-    <link rel="stylesheet" type="text/css" href="<?= $template->url ?>/media/colors~v1.0.0-1.css">
+    <link rel="stylesheet" type="text/css" href="<?= $template->url ?>/media/colors~v1.0.1-1.css">
     <link rel="stylesheet" type="text/css" href="<?= $template->url ?>/media/extras~v1.0.1-2.css">
     
     <? if( $template->count_left_sidebar_groups() > 0 ): ?>
@@ -56,7 +56,7 @@ header("Content-Type: text/html; charset=utf-8"); ?>
     
     <? if( $template->count_right_sidebar_items() > 0 ): ?>
         <!-- Right sidebar -->
-        <link rel="stylesheet" type="text/css" href="<?= $template->url ?>/media/right_sidebar_addon~v1.0.1-1.css">
+        <link rel="stylesheet" type="text/css" href="<?= $template->url ?>/media/right_sidebar_addon~v1.0.2-1.css">
     <? endif; ?>
     
     <!-- Always-on -->
