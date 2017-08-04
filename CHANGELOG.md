@@ -1,6 +1,10 @@
 
 # Responsive Template Change Log
 
+## [1.1.3] - 2017-08-03
+
+- Changed video rendering method to support "play" icon overlays.
+
 ## [1.1.2] - 2017-08-01
 
 - Color and layout fixes.
