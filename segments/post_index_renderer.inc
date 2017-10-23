@@ -53,14 +53,15 @@ $this_module->load_extensions("front", "index_renderer_before_internal_wrapper")
         if( $post->visibility == "level_based" || $post->main_category_visibility == "level_based" ) $special = " special";
         
         $this_module->load_extensions("front", "index_renderer_item_before");
+        $no_image_class = empty($post->featured_image_thumbnail) ? " no_image" : "";
         ?>
         
-        <article class="post clearfix <?= $pinned ?><?= $special ?>" data-post-id="<?= $post->id_post ?>"
+        <article class="post clearfix <?= $pinned ?><?= $special ?><?= $no_image_class ?>" data-post-id="<?= $post->id_post ?>"
                  data-main-category="<?= $post->main_category_slug ?>" data-main-category-min-level="<?= $post->main_category_min_level ?>"
                  data-author-role="<?= $author->get_role(true) ?>" data-author-level="<?= $author->level ?>">
             
             <!-- Category and hashtags -->
-            <div class="meta_box">
+            <div class="meta_box top_meta_box">
                 <a class="meta_field" href="<?= $config->full_root_url ?>/category/<?= $post->main_category_slug ?>/">
                     <?= replace_escaped_objects(
                         $template->language->posted_in,
@@ -94,7 +95,7 @@ $this_module->load_extensions("front", "index_renderer_before_internal_wrapper")
             </a>
             
             <!-- Author meta -->
-            <div class="meta_box">
+            <div class="meta_box middle_meta_box">
                 <div class="meta_section">
                     <?
                     $date        = date("Y/m/d", strtotime($post->publishing_date));
@@ -169,7 +170,7 @@ $this_module->load_extensions("front", "index_renderer_before_internal_wrapper")
                 <? if( $account->level >= config::MODERATOR_USER_LEVEL ): ?>
                     
                     <!-- Admin links -->
-                    <div style="clear: left; padding-top: 20px;">
+                    <div class="admin_links">
                         <a class="greengo inline-block" 
                            href="<?= $config->full_root_path ?>/posts/?edit_post=<?= $post->id_post ?>&wasuuup=<?= md5(mt_rand(1, 65535)) ?>"
                            ><span class="fa fa-pencil fa-fw"></span><?= $language->edit ?></a>
@@ -185,7 +186,7 @@ $this_module->load_extensions("front", "index_renderer_before_internal_wrapper")
                 <? endif; ?>
                 
                 <!-- Extra metas -->
-                <div class="meta_box">
+                <div class="meta_box bottom_meta_box">
                     <div class="meta_section">
                         <? if( $account->level >= config::MODERATOR_USER_LEVEL ): ?>
                             <span class="meta_field critical">

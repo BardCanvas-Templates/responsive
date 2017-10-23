@@ -57,6 +57,7 @@
 .posts_index article .post_excerpt *          { margin-top: 1px; margin-bottom: 1px; }
 .posts_index article .post_excerpt img        { max-width: 100%; }
 .posts_index article .post_contents .meta_box { margin-left: 0; padding-left: 0; }
+.posts_index article .admin_links             { clear: left; padding-top: 20px; }
 
 body#tinymce blockquote,
 article .post_contents blockquote,
