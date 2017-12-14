@@ -1,6 +1,10 @@
 
 # Responsive Template Change Log
 
+## [1.1.5] - 2017-12-14
+
+- Added TinyMCE support to popup layout.
+
 ## [1.1.4]
 
 - Minor CSS tweaks.
