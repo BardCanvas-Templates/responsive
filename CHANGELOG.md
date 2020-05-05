@@ -1,6 +1,10 @@
 
 # Responsive Template Change Log
 
+## [1.1.7] - 2020-05-04
+
+- Added extension points on comments for single post segment.
+
 ## [1.1.6] - 2017-12-18
 
 - Added CSS fix for popup layout.
