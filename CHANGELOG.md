@@ -1,6 +1,10 @@
 
 # Responsive Template Change Log
 
+## [1.1.9] - 2025-04-13
+
+- Added support for hiding restricted tabs on the user profile home.
+
 ## [1.1.8] - 2021-04-20
 
 - Tuned the contact section on the user profile home.
